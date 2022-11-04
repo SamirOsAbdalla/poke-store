@@ -15,10 +15,11 @@ const searchSlice = createSlice({
     reducers: {
         //Change the pokemon that is being
         //individually searched
-        updateName: (state, action: PayloadAction<string>) => {
+        updatePokemonName: (state, action: PayloadAction<string>) => {
             state.pokemonName = action.payload;
         }
     }
 })
 
 export default searchSlice.reducer
+export const { updatePokemonName } = searchSlice.actions
