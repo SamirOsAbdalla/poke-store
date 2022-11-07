@@ -11,11 +11,19 @@ function App() {
 
   const currentPokemon = useAppSelector(state => state.search.pokemonName)
 
+
+  //fetches all pokemon names
   const getPokemonNames = async () => {
     const results = await axios.get("http://pokeapi.co/api/v2/pokemon/?limit=905")
       .then(response => response.data.results)
 
-    window.localStorage.setItem("ALL_POKEMON_NAMES", JSON.stringify(results))
+    const nameMap = new Map();
+
+    for (let i = 0; i < results.length; i++) {
+      nameMap.set(results[i].name, results[i])
+    }
+
+    window.localStorage.setItem("ALL_POKEMON_NAMES", JSON.stringify(Object.fromEntries(nameMap)))
     return results
   }
 
