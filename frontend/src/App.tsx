@@ -5,10 +5,32 @@ import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { useEffect } from "react"
 import { Pokepage } from './components/Pokepage/Pokepage';
 import { useAppSelector } from './app/hooks'
+import axios from 'axios';
 
 function App() {
 
   const currentPokemon = useAppSelector(state => state.search.pokemonName)
+
+  const getPokemonNames = async () => {
+    const results = await axios.get("http://pokeapi.co/api/v2/pokemon/?limit=905")
+      .then(response => response.data.results)
+
+    window.localStorage.setItem("ALL_POKEMON_NAMES", JSON.stringify(results))
+    return results
+  }
+
+  useEffect(() => {
+    if (window.localStorage.getItem("IS_POKEMON_STORED")) {
+      //access stored pokemon
+    }
+    else {
+      //get pokemon from API initially
+      const isStored = true;
+      window.localStorage.setItem("IS_POKEMON_STORED", JSON.stringify(isStored))
+
+      getPokemonNames()
+    }
+  }, [])
 
   return (
     <BrowserRouter>
@@ -17,6 +39,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Greeting />} />
+        <Route path="/shop" />
         <Route path="/shop/:pokemon_name" element={<Pokepage name={currentPokemon} />} />
       </Routes>
     </BrowserRouter>
