@@ -1,10 +1,12 @@
-const { response } = require('express');
 const express = require('express')
 const app = express()
 
+const cors = require('cors')
 
-app.get('/shop/:pokemon_name', (req, res) => {
-    response.json("hi")
+app.use(cors())
+
+app.get('/', (req, res) => {
+    res.json("ok")
 })
 
 const PORT = 3001;
