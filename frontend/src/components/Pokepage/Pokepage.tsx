@@ -1,18 +1,23 @@
 import React from 'react'
 import axios from "axios"
 import { useEffect, useState } from "react"
+import retrievePokemon from "../../services/pokemon"
+
 type pokemonName = {
     name: string
 }
 
 export const Pokepage = ({ name }: pokemonName) => {
 
-    const pokemonNames = window.localStorage.getItem("ALL_POKEMON_NAMES")
-
+    useEffect(() => {
+        retrievePokemon.getPokepage(name).then(response => {
+            console.log(response)
+        })
+    }, [])
 
     return (
         <div>
-            {pokemonNames && <div>{name}</div>}
+            <div>{name}</div>
         </div>
 
     )
