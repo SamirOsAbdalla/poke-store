@@ -44,6 +44,7 @@ export const Searchbar = () => {
         e?.preventDefault()
         const lowercaseSearchedPokemon = searchedPokemon.toLowerCase()
         dispatch(updatePokemonName(lowercaseSearchedPokemon))
+        window.localStorage.setItem("CURRENT_SEARCHED_POKEMON", lowercaseSearchedPokemon)
         navigate(`/shop/${lowercaseSearchedPokemon}`)
     }
 
