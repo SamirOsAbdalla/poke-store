@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { updatePokemonName } from "../../slices/search/searchSlice"
 import { useNavigate } from 'react-router-dom';
-//This component will search for a specific
-//pokemon
+
+
+//This component will search for a specific pokemon
 
 export const Searchbar = () => {
 
@@ -42,7 +43,7 @@ export const Searchbar = () => {
     const navigate = useNavigate()
     const submitUpdatedName = (e: React.SyntheticEvent) => {
         e?.preventDefault()
-        const lowercaseSearchedPokemon = searchedPokemon.toLowerCase()
+        const lowercaseSearchedPokemon: string = searchedPokemon.toLowerCase()
         dispatch(updatePokemonName(lowercaseSearchedPokemon))
         window.localStorage.setItem("CURRENT_SEARCHED_POKEMON", lowercaseSearchedPokemon)
         navigate(`/shop/${lowercaseSearchedPokemon}`)
