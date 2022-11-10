@@ -2,17 +2,34 @@ import React from 'react';
 import { Navbar } from './components/Navbar/navbar';
 import { Greeting } from './components/Greeting/greeting';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Pokepage } from './components/Pokepage/Pokepage';
 import { useAppSelector } from './app/hooks'
 import axios from 'axios';
 import { useAppDispatch } from './app/hooks'
 import { updatePokemonName } from "./slices/search/searchSlice"
-
 const App = () => {
 
-  const currentPokemon = useAppSelector(state => state.search.pokemonName)
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (window.localStorage.getItem("IS_POKEMON_STORED")) {
+      //react now remembers the current pokemon page on reload
+      const currentPokemonSearched = window.localStorage.getItem("CURRENT_SEARCHED_POKEMON")
+      if (currentPokemonSearched) {
+        setCurrentPokemonSearched(currentPokemonSearched)
+      }
+    }
+    else {
+      //get pokemon from API initially
+      const isStored = true;
+      window.localStorage.setItem("IS_POKEMON_STORED", JSON.stringify(isStored))
+
+      getPokemonNames()
+    }
+  }, [])
+
+
 
 
 
@@ -37,28 +54,6 @@ const App = () => {
 
 
 
-  useEffect(() => {
-    if (window.localStorage.getItem("IS_POKEMON_STORED")) {
-
-
-      //react now remembers the current pokemon page on reload
-      const currentPokemonSearched = window.localStorage.getItem("CURRENT_SEARCHED_POKEMON")
-      if (currentPokemonSearched) {
-        setCurrentPokemonSearched(currentPokemonSearched)
-      }
-    }
-    else {
-      //get pokemon from API initially
-      const isStored = true;
-      window.localStorage.setItem("IS_POKEMON_STORED", JSON.stringify(isStored))
-
-      getPokemonNames()
-    }
-  }, [])
-
-
-
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -67,7 +62,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Greeting />} />
         <Route path="/shop" />
-        <Route path="/shop/:pokemon_name" element={<Pokepage name={currentPokemon} />} />
+        <Route path="/shop/:pokemon_name" element={<Pokepage />} />
       </Routes>
     </BrowserRouter>
   );
