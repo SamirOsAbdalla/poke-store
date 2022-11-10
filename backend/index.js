@@ -5,9 +5,14 @@ const cors = require('cors')
 
 app.use(cors())
 
-app.get('/', (req, res) => {
-    res.json("ok")
+app.get('/shop', (req, res) => {
+    res.json("In shop")
 })
+
+app.get('/shop/:pokemonName', (req, res) => {
+    res.json("N")
+})
+
 
 const PORT = 3001;
 app.listen(PORT, () => {
