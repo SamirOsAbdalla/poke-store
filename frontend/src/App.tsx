@@ -8,6 +8,8 @@ import { useAppSelector } from './app/hooks'
 import axios from 'axios';
 import { useAppDispatch } from './app/hooks'
 import { updatePokemonName } from "./slices/search/searchSlice"
+import pokemonService from "./services/pokemon"
+
 const App = () => {
 
   const dispatch = useAppDispatch()
@@ -24,7 +26,6 @@ const App = () => {
       //get pokemon from API initially
       const isStored = true;
       window.localStorage.setItem("IS_POKEMON_STORED", JSON.stringify(isStored))
-
       getPokemonNames()
     }
   }, [])

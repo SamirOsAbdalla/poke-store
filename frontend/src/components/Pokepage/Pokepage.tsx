@@ -1,20 +1,30 @@
 import React from 'react'
 import axios from "axios"
-import { useEffect, useState } from "react"
-import retrievePokemon from "../../services/pokemon"
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { useEffect } from "react"
+import pokemonService from "../../services/pokemon"
 import { useParams } from 'react-router-dom';
+import { pokemonInfo, errorMessage } from '../../interfaces/interface'
 
-type pokemonName = {
-    name: string
-}
+
 
 export const Pokepage = () => {
     const name = useParams().pokemon_name as string
+
+    const fetchPokemon = async () => {
+
+        const res = await pokemonService
+            .getPokepage(name)
+            .then((response: errorMessage | pokemonInfo) => {
+                console.log(response)
+                return response
+            })
+
+        console.log(res)
+    }
+
+
     useEffect(() => {
-        retrievePokemon.getPokepage(name).then(response => {
-            console.log(response)
-        })
+        fetchPokemon()
     })
 
     return (
