@@ -9,7 +9,8 @@ const getPokepage = (pokemon_name: string) => {
 
 
         const errorMessageObject: errorMessage = {
-            message: "Error finding pokemon"
+            message: "Error finding pokemon",
+            kind: "error"
         }
 
         return (Promise.resolve(errorMessageObject))
@@ -24,7 +25,8 @@ const getPokepage = (pokemon_name: string) => {
             if (response.status === 400) {
 
                 const errorMessageObject: errorMessage = {
-                    message: "Error finding pokemon"
+                    message: "Error finding pokemon",
+                    kind: "error"
                 }
 
                 return (errorMessageObject)
