@@ -15,11 +15,8 @@ export const Pokepage = () => {
         const res = await pokemonService
             .getPokepage(name)
             .then((response: errorMessage | pokemonInfo) => {
-                console.log(response)
                 return response
             })
-
-        console.log(res)
     }
 
 
