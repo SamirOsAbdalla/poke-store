@@ -36,7 +36,7 @@ const App = () => {
 
   //fetches all pokemon names from pokeapi
   const getPokemonNames = async () => {
-    const results = await axios.get("http://pokeapi.co/api/v2/pokemon/?limit=905")
+    const results = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=1323")
       .then(response => response.data.results)
     const nameMap = new Map();
 
