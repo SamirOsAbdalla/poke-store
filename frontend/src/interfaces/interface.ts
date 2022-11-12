@@ -1,8 +1,16 @@
+
 export interface pokemonInfo {
-    base_experience: number,
-    id: number
+    id: number,
+    stats: Array<any>,
+    officialArtwork: string,
+    types: Array<any>,
+    abilities: Array<any>,
+    height: number,
+    weight: number,
+    kind: string
 }
 
 export interface errorMessage {
-    message: string
+    message: string,
+    kind: string
 }
