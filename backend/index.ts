@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 const axios = require("axios")
 import { AxiosResponse, AxiosError } from "axios"
+const apicache = require("apicache");
 
 app.use(cors())
 app.use(express.json());
@@ -12,9 +13,19 @@ app.get('/shop', (req: Request, res: Response) => {
 })
 
 interface pokemonInfo {
-    base_experience: number,
-    id: number
+    id: number,
+    stats: Array<any>,
+    officialArtwork: string,
+    types: Array<any>,
+    abilities: Array<any>,
+    height: number,
+    weight: number,
+    kind: string
 }
+let cache = apicache.middleware
+
+//caching all routes for 5 minutes
+app.use(cache('1 hour'))
 
 app.get('/shop/:pokemon_name', (req: Request, res: Response) => {
     const pokemon_name = req.params.pokemon_name
@@ -24,13 +35,19 @@ app.get('/shop/:pokemon_name', (req: Request, res: Response) => {
 app.post("/shop/:pokemon_name", async (req: Request, res: Response) => {
     const pokemonURL = req.body.pokemonURL
     try {
-        const final = await axios.get(pokemonURL).then((response: AxiosResponse) => {
+        const fetchedPokemon = await axios.get(pokemonURL).then((response: AxiosResponse) => {
             return response.data
         })
 
         const responseObject: pokemonInfo = {
-            base_experience: final.base_experience,
-            id: final.id
+            id: fetchedPokemon.id,
+            stats: fetchedPokemon.stats,
+            officialArtwork: fetchedPokemon.sprites.other["official-artwork"]["front_default"],
+            types: fetchedPokemon.types,
+            abilities: fetchedPokemon.abilities,
+            height: fetchedPokemon.height,
+            weight: fetchedPokemon.weight,
+            kind: "pokemon"
         }
 
         res.send(responseObject)
