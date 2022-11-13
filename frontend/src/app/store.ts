@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import searchSliceReducer from '../slices/search/searchSlice'
+import numInCartReducer from "../slices/numInCart/numInCartSlice"
 
 const store = configureStore({
     reducer: {
-        search: searchSliceReducer
+        search: searchSliceReducer,
+        numInCart: numInCartReducer,
     }
 })
 
