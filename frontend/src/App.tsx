@@ -4,10 +4,10 @@ import { Greeting } from './components/Greeting/greeting';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Pokepage } from './components/Pokepage/Pokepage';
-import { useAppSelector } from './app/hooks'
 import axios from 'axios';
 import { useAppDispatch } from './app/hooks'
 import { updatePokemonName } from "./slices/search/searchSlice"
+import { increaseNumberInCart } from './slices/numInCart/numInCartSlice';
 import pokemonService from "./services/pokemon"
 
 const App = () => {
@@ -16,11 +16,20 @@ const App = () => {
 
   useEffect(() => {
     if (window.localStorage.getItem("IS_POKEMON_STORED")) {
+
       //react now remembers the current pokemon page on reload
       const currentPokemonSearched = window.localStorage.getItem("CURRENT_SEARCHED_POKEMON")
       if (currentPokemonSearched) {
-        setCurrentPokemonSearched(currentPokemonSearched)
+        dispatchCurrentPokemonSearched(currentPokemonSearched)
       }
+
+      //react remembers the number of pokemon stored in cart
+
+      if (window.localStorage.getItem("NUMBER_POKEMON_IN_CART") != null) {
+        dispatch(increaseNumberInCart(JSON.parse(window.localStorage.getItem("NUMBER_POKEMON_IN_CART") as string)))
+      }
+
+
     }
     else {
       //get pokemon from API initially
@@ -49,7 +58,7 @@ const App = () => {
 
 
 
-  const setCurrentPokemonSearched = (currentPokemon: string) => {
+  const dispatchCurrentPokemonSearched = (currentPokemon: string) => {
     dispatch(updatePokemonName(currentPokemon))
   }
 
