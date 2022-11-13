@@ -24,7 +24,7 @@ interface pokemonInfo {
 }
 let cache = apicache.middleware
 
-//caching all routes for 5 minutes
+//caching all routes for 1 hour
 app.use(cache('1 hour'))
 
 app.get('/shop/:pokemon_name', (req: Request, res: Response) => {
