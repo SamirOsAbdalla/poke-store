@@ -1,6 +1,7 @@
 
 export interface pokemonInfo {
     id: number,
+    name: string,
     stats: Array<any>,
     officialArtwork: string,
     types: Array<any>,

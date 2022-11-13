@@ -1,8 +1,12 @@
 import React from "react";
 import "./navbar.css"
 import { NavLink } from "react-router-dom"
+import { useAppSelector } from "../../app/hooks";
 
 export const Navbar = () => {
+    const numInCart = useAppSelector(state => {
+        return state.numInCart.numberInCart
+    })
     return (
         <div className="navbar-wrapper">
             <div className="navbar-left">
@@ -22,6 +26,9 @@ export const Navbar = () => {
                 </div>
                 <div className="nav-cart">
                     Shop Icon
+                    <div>
+                        {numInCart}
+                    </div>
                 </div>
             </div>
         </div >
