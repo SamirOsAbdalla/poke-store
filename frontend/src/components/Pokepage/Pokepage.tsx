@@ -42,18 +42,22 @@ export const Pokepage = () => {
             const narrowedPokemon: pokemonInfo = pokemon as pokemonInfo
             setCurrentPokemonPage(narrowedPokemon)
             setIsPokemonFetched(true)
+        } else {
+
+            //add error page
         }
 
     }
 
 
     const addPokemonToCart = () => {
-
         dispatch(increaseNumberInCart(1))
     }
 
 
     useEffect(() => {
+
+        //fetch searched pokemon from pokemon on initial render
         if (!isPokemonFetched) {
             fetchPokemon()
         }
@@ -68,11 +72,10 @@ export const Pokepage = () => {
             <div>
                 {name}
             </div>
-            <div>
-                {numInCart}
-            </div>
             <button onClick={addPokemonToCart}>Add to cart</button>
-            {currentPokemonPage.id}
+            <div>
+                Id: {currentPokemonPage.id}
+            </div>
         </div >
 
     )
