@@ -4,7 +4,9 @@ import { useState, useEffect } from "react"
 import pokemonService from "../../services/pokemon"
 import { useParams } from 'react-router-dom';
 import { pokemonInfo, errorMessage } from '../../interfaces/interface'
-
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { updatePokemonName } from '../../slices/search/searchSlice';
+import { increaseNumberInCart } from '../../slices/numInCart/numInCartSlice';
 
 
 export const Pokepage = () => {
@@ -20,7 +22,13 @@ export const Pokepage = () => {
         kind: ""
     })
 
+    const [isPokemonFetched, setIsPokemonFetched] = useState<boolean>(false)
+
     const name = useParams().pokemon_name as string
+    const dispatch = useAppDispatch();
+    const numInCart = useAppSelector(state => {
+        return state.numInCart.numberInCart
+    })
 
     const fetchPokemon = async () => {
 
@@ -33,21 +41,38 @@ export const Pokepage = () => {
         if (pokemon.kind === "pokemon") {
             const narrowedPokemon: pokemonInfo = pokemon as pokemonInfo
             setCurrentPokemonPage(narrowedPokemon)
-        } else {
+            setIsPokemonFetched(true)
         }
 
     }
 
 
+    const addPokemonToCart = () => {
+
+        dispatch(increaseNumberInCart(1))
+    }
+
+
     useEffect(() => {
-        fetchPokemon()
+        if (!isPokemonFetched) {
+            fetchPokemon()
+        }
+
     }, [])
 
+
+
+    //add error page later
     return (
         <div>
             <div>
                 {name}
             </div>
+            <div>
+                {numInCart}
+            </div>
+            <button onClick={addPokemonToCart}>Add to cart</button>
+            {currentPokemonPage.id}
         </div >
 
     )
