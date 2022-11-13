@@ -2,6 +2,9 @@ import axios from "axios";
 import { errorMessage } from "../interfaces/interface";
 const baseUrl = 'http://localhost:3001'
 
+
+
+
 const getPokepage = (pokemon_name: string) => {
     const allPokemonNames = window.localStorage.getItem("ALL_POKEMON_NAMES") as string
 

@@ -23,6 +23,9 @@ const numInCartSlice = createSlice({
         decreaseNumberInCart: (state, action: PayloadAction<number>) => {
             if (state.numberInCart > 0) {
                 state.numberInCart -= action.payload;
+                if (state.numberInCart < 0) {
+                    state.numberInCart = 0;
+                }
                 window.localStorage.setItem("NUMBER_POKEMON_IN_CART", JSON.stringify(state.numberInCart))
             }
         }
