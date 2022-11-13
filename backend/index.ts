@@ -20,7 +20,8 @@ interface pokemonInfo {
     abilities: Array<any>,
     height: number,
     weight: number,
-    kind: string
+    kind: string,
+    name: string
 }
 let cache = apicache.middleware
 
@@ -47,9 +48,9 @@ app.post("/shop/:pokemon_name", async (req: Request, res: Response) => {
             abilities: fetchedPokemon.abilities,
             height: fetchedPokemon.height,
             weight: fetchedPokemon.weight,
-            kind: "pokemon"
+            kind: "pokemon",
+            name: fetchedPokemon.forms[0].name
         }
-
         res.send(responseObject)
     }
     catch (error: unknown) {
