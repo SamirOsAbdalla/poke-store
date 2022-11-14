@@ -14,7 +14,9 @@ const numInCartSlice = createSlice({
     initialState,
 
     reducers: {
-
+        setNumberOfPokemon: (state, action: PayloadAction<number>) => {
+            state.numberInCart = action.payload
+        },
         increaseNumberInCart: (state, action: PayloadAction<number>) => {
             state.numberInCart += action.payload;
 
@@ -33,4 +35,4 @@ const numInCartSlice = createSlice({
 })
 
 export default numInCartSlice.reducer
-export const { increaseNumberInCart, decreaseNumberInCart } = numInCartSlice.actions
+export const { increaseNumberInCart, decreaseNumberInCart, setNumberOfPokemon } = numInCartSlice.actions
