@@ -14,7 +14,6 @@ export const Pokepage = () => {
     const [currentPokemonPage, setCurrentPokemonPage] = useState<pokemonInfo>({
         id: 0,
         stats: [],
-        officialArtwork: "",
         types: [],
         abilities: [],
         height: 0,
@@ -33,7 +32,6 @@ export const Pokepage = () => {
         const pokemon = await pokemonService
             .getPokepage(name)
             .then((response: errorMessage | pokemonInfo) => {
-                console.log(response)
                 return response
             })
 
@@ -42,7 +40,6 @@ export const Pokepage = () => {
             setCurrentPokemonPage(narrowedPokemon)
             setIsPokemonFetched(true)
         } else {
-
             //add error page
         }
 
