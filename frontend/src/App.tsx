@@ -5,18 +5,19 @@ import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Pokepage } from './components/Pokepage/Pokepage';
 import axios from 'axios';
-import { useAppDispatch } from './app/hooks'
+import { useAppDispatch, useAppSelector } from './app/hooks'
 import { updatePokemonName } from "./slices/search/searchSlice"
-import { increaseNumberInCart } from './slices/numInCart/numInCartSlice';
+import { setNumberOfPokemon } from './slices/numInCart/numInCartSlice';
 import pokemonService from "./services/pokemon"
 
 const App = () => {
 
   const dispatch = useAppDispatch()
+  const cartLength = useAppSelector(state => state.storedCartPokemon).storedCartPokemon.length
 
   useEffect(() => {
-    if (window.localStorage.getItem("IS_POKEMON_STORED")) {
-
+    const isPokemonStored = window.localStorage.getItem("IS_POKEMON_STORED")
+    if (isPokemonStored && (JSON.parse(isPokemonStored) === true)) {
       //react now remembers the current pokemon page on reload
       const currentPokemonSearched = window.localStorage.getItem("CURRENT_SEARCHED_POKEMON")
       if (currentPokemonSearched) {
@@ -24,17 +25,23 @@ const App = () => {
       }
 
       //react remembers the number of pokemon stored in cart
+      const numPokemonInCart = window.localStorage.getItem("NUMBER_POKEMON_IN_CART")
+      if (numPokemonInCart != null) {
 
-      if (window.localStorage.getItem("NUMBER_POKEMON_IN_CART") != null) {
-        dispatch(increaseNumberInCart(JSON.parse(window.localStorage.getItem("NUMBER_POKEMON_IN_CART") as string)))
+        //in case someone tampers with localStorage property
+        //react will reflect the accurate number of items in the cart
+        if (JSON.parse(numPokemonInCart) != cartLength) {
+          window.localStorage.setItem("NUMBER_POKEMON_IN_CART", JSON.stringify(cartLength))
+        } else {
+          dispatch(setNumberOfPokemon(JSON.parse(numPokemonInCart as string)))
+        }
       }
 
 
     }
     else {
       //get pokemon from API initially
-      const isStored = true;
-      window.localStorage.setItem("IS_POKEMON_STORED", JSON.stringify(isStored))
+      window.localStorage.setItem("IS_POKEMON_STORED", JSON.stringify(true))
       getPokemonNames()
     }
   }, [])
@@ -45,8 +52,7 @@ const App = () => {
 
   //fetches all pokemon names from pokeapi
   const getPokemonNames = async () => {
-    const results = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=1323")
-      .then(response => response.data.results)
+    const results = await pokemonService.getAllPokemon()
     const nameMap = new Map();
 
     for (let i = 0; i < results.length; i++) {
