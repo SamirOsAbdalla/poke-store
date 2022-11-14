@@ -9,8 +9,6 @@ const getPokepage = (pokemon_name: string) => {
     const allPokemonNames = window.localStorage.getItem("ALL_POKEMON_NAMES") as string
 
     if (JSON.parse(allPokemonNames)[pokemon_name] === undefined) {
-
-
         const errorMessageObject: errorMessage = {
             message: "Error finding pokemon",
             kind: "error"
@@ -19,11 +17,8 @@ const getPokepage = (pokemon_name: string) => {
         return (Promise.resolve(errorMessageObject))
     }
     else {
-        const url = JSON.parse(allPokemonNames)[pokemon_name].url
 
-        const request = axios.post(`${baseUrl}/shop/${pokemon_name}`, {
-            pokemonURL: url
-        })
+        const request = axios.get(`${baseUrl}/shop/${pokemon_name}`)
         return request.then(response => {
             if (response.status === 400) {
 
@@ -39,7 +34,13 @@ const getPokepage = (pokemon_name: string) => {
     }
 }
 
+const getAllPokemon = async () => {
+    const allPokemon = await axios.get(`${baseUrl}`)
+
+    return allPokemon.data.results
+}
 
 export default {
-    getPokepage
+    getPokepage,
+    getAllPokemon
 }
