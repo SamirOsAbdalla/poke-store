@@ -54,11 +54,17 @@ export const Searchbar = () => {
     return (
         <div className="searchbar-wrapper">
             <form onSubmit={handleSubmit}>
-                <label>Find a pokemon below or click shop!</label>
-                <input type="text" value={searchedPokemon} onChange={handlePokemonNameChange} />
-                <button type="submit" onClick={submitUpdatedName}>
-                    Search
-                </button>
+                <div className="form-entries">
+                    <div className='label'>
+                        <label>Find a pokemon below or click shop!</label>
+                    </div>
+                    <div className="search-modules">
+                        <input type="text" value={searchedPokemon} onChange={handlePokemonNameChange} />
+                        <button type="submit" onClick={submitUpdatedName}>
+                            Search
+                        </button>
+                    </div>
+                </div>
             </form>
         </div>
     )

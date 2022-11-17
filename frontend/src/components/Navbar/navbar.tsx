@@ -10,17 +10,22 @@ export const Navbar = () => {
     return (
         <div className="navbar-wrapper">
             <div className="navbar-left">
-                {/*add Link from 
-                react router later */}
-                <NavLink to="/" className="nav-home">
-                    Home
-                </NavLink>
-                <NavLink to="/shop" className="nav-shop">
-                    Shop
+                <NavLink to="/" className="nav-home link">
+                    PokeStore
                 </NavLink>
             </div>
-
+            <div className="navbar-middle">
+                <NavLink to="/shop" className="nav-shop link">
+                    Shop
+                </NavLink>
+                <NavLink to="/about" className="nav-about link">
+                    About
+                </NavLink>
+            </div>
             <div className="navbar-right">
+                <div className="nav-log">
+                    Log in
+                </div>
                 <div className="nav-heart">
                     Fav Icon
                 </div>

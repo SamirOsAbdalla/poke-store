@@ -1,14 +1,46 @@
 .navbar-wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
+.nav-home {
+    font-size: 3em;
+}
+
+.nav-shop,
+.nav-about {
+    font-size: 1.5em;
+}
+
+.nav-log,
+.nav-heart,
+.nav-cart {
+    font-size: 1.5em
+}
+
+.link {
+    text-decoration: none;
+}
 
 .navbar-left,
-.navbar-right {
+.navbar-right,
+.navbar-middle {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 2em;
     margin: 1em;
+}
+
+@media screen and (max-width: 400px) {
+    .navbar-left {
+        width: 100%;
+    }
+
+    .nav-home {
+        font-size: 4em;
+    }
 }
