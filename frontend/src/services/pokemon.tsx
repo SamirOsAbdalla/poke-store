@@ -1,37 +1,30 @@
 import axios from "axios";
 import { errorMessage } from "../interfaces/interface";
+import { useAppSelector } from "../app/hooks";
 const baseUrl = 'http://localhost:3001'
 
-
+interface PropTypes {
+    pokemon_name: string,
+    allPokemon: string
+}
 
 
 const getPokepage = (pokemon_name: string) => {
-    const allPokemonNames = window.localStorage.getItem("ALL_POKEMON_NAMES") as string
 
-    if (JSON.parse(allPokemonNames)[pokemon_name] === undefined) {
-        const errorMessageObject: errorMessage = {
-            message: "Error finding pokemon",
-            kind: "error"
-        }
+    const request = axios.get(`${baseUrl}/shop/${pokemon_name}`)
+    return request.then(response => {
+        if (response.status === 400) {
 
-        return (Promise.resolve(errorMessageObject))
-    }
-    else {
-
-        const request = axios.get(`${baseUrl}/shop/${pokemon_name}`)
-        return request.then(response => {
-            if (response.status === 400) {
-
-                const errorMessageObject: errorMessage = {
-                    message: "Error finding pokemon",
-                    kind: "error"
-                }
-
-                return (errorMessageObject)
+            const errorMessageObject: errorMessage = {
+                message: "Error finding pokemon",
+                kind: "error"
             }
-            return response.data
-        })
-    }
+
+            return (errorMessageObject)
+        }
+        return response.data
+    })
+
 }
 
 const getAllPokemon = async () => {
