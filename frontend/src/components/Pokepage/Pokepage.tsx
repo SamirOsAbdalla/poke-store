@@ -23,9 +23,11 @@ export const Pokepage = () => {
     })
 
     const [isPokemonFetched, setIsPokemonFetched] = useState<boolean>(false)
+    const [doesPokemonExist, setDoesPokemonExist] = useState<boolean>(false)
 
     const name = useParams().pokemon_name as string
     const dispatch = useAppDispatch();
+
 
     const fetchPokemon = async () => {
 
@@ -39,16 +41,20 @@ export const Pokepage = () => {
             const narrowedPokemon: pokemonInfo = pokemon as pokemonInfo
             setCurrentPokemonPage(narrowedPokemon)
             setIsPokemonFetched(true)
+            setDoesPokemonExist(true)
         } else {
             //add error page
+
         }
 
     }
 
 
     const addPokemonToCart = () => {
-        dispatch(increaseNumberInCart(1))
-        dispatch(storeNewPokemon(currentPokemonPage))
+        if (doesPokemonExist) {
+            dispatch(increaseNumberInCart(1))
+            dispatch(storeNewPokemon(currentPokemonPage))
+        }
     }
 
 

@@ -16,9 +16,20 @@ const App = () => {
   const dispatch = useAppDispatch()
   const cartLength = useAppSelector(state => state.storedCartPokemon).storedCartPokemon.length
 
-  useEffect(() => {
+  //fetches all pokemon names from pokeapi
+  const getPokemonNames = async () => {
+    const results = await pokemonService.getAllPokemon()
+    const nameMap = new Map();
 
+    for (let i = 0; i < results.length; i++) {
+      nameMap.set(results[i].name, results[i])
+    }
+    dispatch(setAllPokemonNames(JSON.stringify(Object.fromEntries(nameMap))))
+  }
+
+  useEffect(() => {
     getPokemonNames()
+
     //react now remembers the current pokemon page on reload
     const currentPokemonSearched = window.localStorage.getItem("CURRENT_SEARCHED_POKEMON")
     if (currentPokemonSearched) {
@@ -39,22 +50,6 @@ const App = () => {
     }
 
   }, [])
-
-
-
-
-
-  //fetches all pokemon names from pokeapi
-  const getPokemonNames = async () => {
-    const results = await pokemonService.getAllPokemon()
-    const nameMap = new Map();
-
-    for (let i = 0; i < results.length; i++) {
-      nameMap.set(results[i].name, results[i])
-    }
-    dispatch(setAllPokemonNames(JSON.stringify(Object.fromEntries(nameMap))))
-    return results
-  }
 
 
 
