@@ -10,22 +10,30 @@ import { updatePokemonName } from "./slices/search/searchSlice"
 import { setNumberOfPokemon } from './slices/numInCart/numInCartSlice';
 import pokemonService from "./services/pokemon"
 import { setAllPokemonNames } from './slices/allPokemon/allPokemonNamesSlice';
+import { Shop } from './components/Shop/Shop';
 
 const App = () => {
 
   const dispatch = useAppDispatch()
   const cartLength = useAppSelector(state => state.storedCartPokemon).storedCartPokemon.length
 
+
+
+
   //fetches all pokemon names from pokeapi
   const getPokemonNames = async () => {
     const results = await pokemonService.getAllPokemon()
-    const nameMap = new Map();
+    const nameArray = [];
 
     for (let i = 0; i < results.length; i++) {
-      nameMap.set(results[i].name, results[i])
+      nameArray.push(results[i])
     }
-    dispatch(setAllPokemonNames(JSON.stringify(Object.fromEntries(nameMap))))
+    dispatch(setAllPokemonNames(JSON.stringify(nameArray)))
+    window.localStorage.setItem("ALL_POKEMON_NAMES", (JSON.stringify(nameArray)))
   }
+
+
+
 
   useEffect(() => {
     getPokemonNames()
@@ -66,7 +74,7 @@ const App = () => {
       </div>
       <Routes>
         <Route path="/" element={<Greeting />} />
-        <Route path="/shop" />
+        <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:pokemon_name" element={<Pokepage />} />
       </Routes>
     </BrowserRouter>
