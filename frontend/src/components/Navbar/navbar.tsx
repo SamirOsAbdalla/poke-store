@@ -3,6 +3,7 @@ import "./navbar.css"
 import { NavLink } from "react-router-dom"
 import { useAppSelector } from "../../app/hooks";
 
+
 export const Navbar = () => {
     const numInCart = useAppSelector(state => {
         return state.numInCart.numberInCart
@@ -14,26 +15,26 @@ export const Navbar = () => {
                     PokeStore
                 </NavLink>
             </div>
-            <div className="navbar-middle">
-                <NavLink to="/shop" className="nav-shop link">
-                    Shop
-                </NavLink>
-                <NavLink to="/about" className="nav-about link">
-                    About
-                </NavLink>
-            </div>
             <div className="navbar-right">
-                <div className="nav-log">
-                    Log in
+                <div className="nav-section nav-section-1">
+                    <NavLink to="/shop" className="nav-shop link">
+                        Shop
+                    </NavLink>
                 </div>
-                <div className="nav-heart">
-                    Fav Icon
+                <div className="nav-section nav-section-2">
+                    <NavLink to="/about" className="nav-fav link">
+                        Favorites
+                    </NavLink>
                 </div>
-                <div className="nav-cart">
-                    Shop Icon
-                    <div>
-                        {numInCart}
-                    </div>
+                <div className="nav-section nav-section-3">
+                    <NavLink to="/cart" className="nav-cart link">
+                        Cart
+                    </NavLink>
+                </div>
+                <div className="nav-section nav-section-4">
+                    <NavLink to="/login" className="nav-login link">
+                        Log In
+                    </NavLink>
                 </div>
             </div>
         </div >

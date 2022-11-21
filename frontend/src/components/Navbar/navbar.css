@@ -1,46 +1,100 @@
 .navbar-wrapper {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
+    width: 100%;
 }
 
 .nav-home {
-    font-size: 3em;
+    background: #f01515;
+    color: transparent;
+    background-clip: text;
+    -webkit-text-stroke-color: #ffffff;
+    -webkit-text-stroke-width: 1px;
+    font-weight: 1000;
+    font-family: "Garamond";
+    width: 100%;
+    font-size: 20vw;
 }
 
-.nav-shop,
-.nav-about {
-    font-size: 1.5em;
+.navbar-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: .5em;
+    gap: .1em;
+    padding: 0em;
+    width: fit-content;
 }
 
-.nav-log,
-.nav-heart,
-.nav-cart {
-    font-size: 1.5em
+.navbar-left {
+    margin: .5em;
 }
 
 .link {
     text-decoration: none;
 }
 
-.navbar-left,
-.navbar-right,
-.navbar-middle {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 2em;
-    margin: 1em;
+.nav-section {
+    font-size: 1.5em;
+    padding: .2em;
 }
 
-@media screen and (max-width: 400px) {
-    .navbar-left {
-        width: 100%;
+.nav-section:hover {
+    transform: translateY(-5px);
+    background-color: gray;
+}
+
+.nav-section-1 {
+    border: 2px solid red;
+    border-radius: 15px 0px 0px 15px;
+}
+
+.nav-section-2,
+.nav-section-3 {
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+.nav-section-4 {
+    border-radius: 0px 15px 15px 0px;
+    border: 2px solid red;
+}
+
+@media screen and (min-width: 610px) {
+    .navbar-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .nav-home {
         font-size: 4em;
+    }
+
+    .nav-section {
+        font-size: 1.3em;
+    }
+}
+
+@media screen and (min-width: 900px) {
+
+    .navbar-right {
+        margin-right: 4em;
+    }
+
+    .navbar-left {
+        margin-left: 4em;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .navbar-left {
+        font-size: 1.2em;
+    }
+
+    .nav-section {
+        font-size: 1.8em;
     }
 }
