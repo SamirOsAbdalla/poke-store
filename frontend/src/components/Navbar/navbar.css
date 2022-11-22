@@ -5,6 +5,22 @@
     width: 100%;
 }
 
+.toggle-unshow {
+    display: none;
+}
+
+.toggle-show {
+    display: unset;
+}
+
+.navbar-right {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+    position: relative;
+    top: 1em
+}
+
 .nav-home {
     background: #f01515;
     color: transparent;
@@ -17,7 +33,7 @@
     font-size: 20vw;
 }
 
-.navbar-right {
+.navbar-right-top {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -79,7 +95,7 @@
 
 @media screen and (min-width: 900px) {
 
-    .navbar-right {
+    .navbar-right-top {
         margin-right: 4em;
     }
 
