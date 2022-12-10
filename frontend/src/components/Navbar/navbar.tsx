@@ -10,11 +10,11 @@ export const Navbar = () => {
     })
 
     const toggleNavbar = () => {
-        console.log("hi")
         document.querySelector(".toggle-unshow")?.classList.toggle(("toggle-show"))
     }
+
     return (
-        <div className="navbar-wrapper" onClick={toggleNavbar}>
+        <div className="navbar-wrapper">
             <div className="navbar-left">
                 <NavLink to="/" className="nav-home link">
                     PokeStore
@@ -33,7 +33,7 @@ export const Navbar = () => {
                         </NavLink>
                     </div>
                     <div className="nav-section nav-section-3">
-                        <NavLink to="/cart" className="nav-cart link">
+                        <NavLink to="/cart" className="nav-cart link" onClick={toggleNavbar}>
                             Cart {numInCart}
                         </NavLink>
                     </div>
@@ -43,7 +43,7 @@ export const Navbar = () => {
                         </NavLink>
                     </div>
                 </div>
-                <div className="toggle-unshow toggle-show">
+                <div className="toggle-unshow">
                     <Cart />
                 </div>
             </div>
