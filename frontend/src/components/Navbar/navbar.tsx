@@ -40,7 +40,49 @@ export const Navbar = () => {
 
     return (
         <header className="navbar-wrapper">
-
+            <nav>
+                <ul className="nav__links">
+                    <li>
+                        <NavLink className="nav__link" to="/">
+                            Home
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="nav__link" to="/about">
+                            About
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="nav__link" to="/shop">
+                            Shop
+                        </NavLink>
+                    </li>
+                </ul>
+            </nav>
+            <div className="nav__logo">
+                <NavLink className="logo" to="/">
+                    PokeStore
+                </NavLink>
+            </div>
+            <nav>
+                <ul className="nav__links">
+                    <li>
+                        <NavLink className="nav__link" to="/checkout">
+                            Cart
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="nav__link" to="/favorites">
+                            Fav
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="nav__link" to="/login">
+                            Login
+                        </NavLink>
+                    </li>
+                </ul>
+            </nav>
         </header >
     )
 }

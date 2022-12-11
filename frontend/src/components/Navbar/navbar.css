@@ -1,116 +1,37 @@
 .navbar-wrapper {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
+    margin: 1em 5vw;
 }
 
-.toggle-unshow {
-    display: none;
-}
-
-.toggle-show {
-    display: unset;
-}
-
-.navbar-right {
+.nav__links {
+    list-style: none;
     display: flex;
-    flex-direction: column;
-    margin: 0.5em;
-    position: relative;
-    top: 1em
+    gap: 1em;
 }
 
-.nav-home {
-    background: #f01515;
-    color: transparent;
-    background-clip: text;
-    -webkit-text-stroke-color: #ffffff;
-    -webkit-text-stroke-width: 1px;
-    font-weight: 1000;
-    font-family: "Garamond";
-    width: 100%;
-    font-size: 20vw;
+.nav__links li {
+    display: inline-block;
+    padding: 0 .5em;
 }
 
-.navbar-right-top {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: .5em;
-    gap: .1em;
-    padding: 0em;
-    width: fit-content;
+.nav__links li a:hover {
+    color: red
 }
 
-.navbar-left {
-    margin: .5em;
-}
-
-.link {
+.nav__link {
     text-decoration: none;
-}
-
-.nav-section {
+    color: black;
     font-size: 1.5em;
-    padding: .2em;
 }
 
-.nav-section:hover {
-    transform: translateY(-5px);
-    background-color: gray;
+.nav__logo {
+    font-size: 4em;
+    list-style: none;
 }
 
-.nav-section-1 {
-    border: 2px solid red;
-    border-radius: 15px 0px 0px 15px;
-}
-
-.nav-section-2,
-.nav-section-3 {
-    border: 2px solid red;
-    border-radius: 5px;
-}
-
-.nav-section-4 {
-    border-radius: 0px 15px 15px 0px;
-    border: 2px solid red;
-}
-
-@media screen and (min-width: 610px) {
-    .navbar-wrapper {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .nav-home {
-        font-size: 4em;
-    }
-
-    .nav-section {
-        font-size: 1.3em;
-    }
-}
-
-@media screen and (min-width: 900px) {
-
-    .navbar-right-top {
-        margin-right: 4em;
-    }
-
-    .navbar-left {
-        margin-left: 4em;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-
-    .navbar-left {
-        font-size: 1.2em;
-    }
-
-    .nav-section {
-        font-size: 1.8em;
-    }
+.logo {
+    text-decoration: none;
+    color: black
 }
