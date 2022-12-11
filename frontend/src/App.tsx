@@ -11,6 +11,7 @@ import { setNumberOfPokemon } from './slices/numInCart/numInCartSlice';
 import pokemonService from "./services/pokemon"
 import { setAllPokemonNames } from './slices/allPokemon/allPokemonNamesSlice';
 import { Shop } from './components/Shop/Shop';
+import { CheckoutPage } from './components/CheckoutPage/checkoutpage';
 
 const App = () => {
 
@@ -76,6 +77,7 @@ const App = () => {
         <Route path="/" element={<Greeting />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:pokemon_name" element={<Pokepage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </BrowserRouter>
   );
