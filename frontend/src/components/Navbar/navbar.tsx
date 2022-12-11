@@ -9,10 +9,6 @@ export const Navbar = () => {
         return state.numInCart.numberInCart
     })
 
-    const toggleNavbar = () => {
-        document.querySelector(".toggle-unshow")?.classList.toggle(("toggle-show"))
-    }
-
     return (
         <div className="navbar-wrapper">
             <div className="navbar-left">
@@ -33,7 +29,7 @@ export const Navbar = () => {
                         </NavLink>
                     </div>
                     <div className="nav-section nav-section-3">
-                        <NavLink to="/cart" className="nav-cart link" onClick={toggleNavbar}>
+                        <NavLink to="/checkout" className="nav-cart link">
                             Cart {numInCart}
                         </NavLink>
                     </div>
@@ -42,9 +38,6 @@ export const Navbar = () => {
                             Log In
                         </NavLink>
                     </div>
-                </div>
-                <div className="toggle-unshow">
-                    <Cart />
                 </div>
             </div>
         </div >
