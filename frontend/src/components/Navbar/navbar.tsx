@@ -3,15 +3,7 @@ import "./navbar.css"
 import { NavLink } from "react-router-dom"
 import { useAppSelector } from "../../app/hooks";
 import { Cart } from "../Cart/Cart";
-
-export const Navbar = () => {
-    const numInCart = useAppSelector(state => {
-        return state.numInCart.numberInCart
-    })
-
-    return (
-        <div className="navbar-wrapper">
-            <div className="navbar-left">
+{/*  <div className="navbar-left">
                 <NavLink to="/" className="nav-home link">
                     PokeStore
                 </NavLink>
@@ -39,8 +31,17 @@ export const Navbar = () => {
                         </NavLink>
                     </div>
                 </div>
-            </div>
-        </div >
+</div>*/}
+
+export const Navbar = () => {
+    const numInCart = useAppSelector(state => {
+        return state.numInCart.numberInCart
+    })
+
+    return (
+        <header className="navbar-wrapper">
+
+        </header >
     )
 }
 
