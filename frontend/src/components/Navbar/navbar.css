@@ -1,37 +1,181 @@
+:root {
+    --navbar-heading-padding: 1em;
+    --navbar-heading-margin: 5vw;
+    --navbar-component-font-color: #202f9e;
+}
+
 .navbar-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1em 5vw;
+    padding-top: var(--navbar-heading-padding);
+    padding-bottom: var(--navbar-heading-padding);
+    background-color: #ECF0F3;
+    width: 100%;
+    min-height: 3.5em;
+}
+
+.nav__left {
+    margin-left: var(--navbar-heading-margin);
 }
 
 .nav__links {
     list-style: none;
     display: flex;
-    gap: 1em;
+    gap: 1.4em;
 }
 
-.nav__links li {
-    display: inline-block;
+.nav__link,
+.nav__link__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0 .5em;
 }
 
 .nav__links li a:hover {
-    color: red
+    color: rgb(251, 251, 251);
+    box-shadow: 4px 4px 8px #80808072,
+        -4px -4px 8px #a8a7a66b;
+    background-color: #ee1515;
+    border-radius: 6px;
 }
 
 .nav__link {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: none;
-    color: black;
-    font-size: 1.5em;
+    color: var(--navbar-component-font-color);
+    font-size: 1.4em;
+    padding: 0.5em;
+    transition: 0.4s ease;
 }
 
 .nav__logo {
-    font-size: 4em;
+    font-size: 3.3em;
+    height: 1em;
+    position: relative;
+    bottom: 1.2em;
     list-style: none;
+    font-family: "Pokemon Solid";
 }
 
 .logo {
     text-decoration: none;
-    color: black
+    -webkit-text-fill-color: #FFDE00;
+    -webkit-text-stroke: 1.2px #202f9e;
+    font-weight: 1000;
+}
+
+.nav__right {
+    margin-right: var(--navbar-heading-margin);
+}
+
+.shopping__bag,
+.favorites {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.nav__link__icon {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+    color: var(--navbar-component-font-color);
+    font-size: 1.3em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    transition: 0.4s ease;
+}
+
+.hamburger {
+    display: none;
+    width: 52px;
+    cursor: pointer;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+.bar {
+    display: block;
+    width: 1.5em;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #202f9e;
+}
+
+.active__hamburger {
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .nav__left {
+        margin-left: 1vw;
+    }
+
+    .nav__right {
+        margin-right: 1vw;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .hamburger {
+        display: block;
+        margin-left: 7vw;
+    }
+
+    .shopping__bag__container {
+        margin-right: 7vw;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hidden__hamburger {
+        display: none;
+    }
+
+    .active__hamburger.active {
+        display: unset;
+    }
+
+    .nav__links {
+        width: fit-content
+    }
+
+    .nav__links__left {
+        position: fixed;
+        left: -110%;
+        top: 5em;
+        gap: 0;
+        flex-direction: column;
+        background-color: #ECF0F3;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .hamburger__item {
+        margin: .5em 0;
+    }
+
+    .nav__links__left.active {
+        left: 0;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .nav__logo {
+        font-size: 2.5em;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
 }

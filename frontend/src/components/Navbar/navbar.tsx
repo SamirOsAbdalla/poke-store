@@ -3,80 +3,85 @@ import "./navbar.css"
 import { NavLink } from "react-router-dom"
 import { useAppSelector } from "../../app/hooks";
 import { Cart } from "../Cart/Cart";
-{/*  <div className="navbar-left">
-                <NavLink to="/" className="nav-home link">
-                    PokeStore
-                </NavLink>
-            </div>
-            <div className="navbar-right">
-                <div className="navbar-right-top">
-                    <div className="nav-section nav-section-1">
-                        <NavLink to="/shop" className="nav-shop link">
-                            Shop
-                        </NavLink>
-                    </div>
-                    <div className="nav-section nav-section-2">
-                        <NavLink to="/about" className="nav-fav link">
-                            Favorites
-                        </NavLink>
-                    </div>
-                    <div className="nav-section nav-section-3">
-                        <NavLink to="/checkout" className="nav-cart link">
-                            Cart {numInCart}
-                        </NavLink>
-                    </div>
-                    <div className="nav-section nav-section-4">
-                        <NavLink to="/login" className="nav-login link">
-                            Log In
-                        </NavLink>
-                    </div>
-                </div>
-</div>*/}
+import { AiOutlineShopping, AiOutlineStar } from "react-icons/ai"
+
+const handleHamburgerClick = () => {
+    const hamburger = document.querySelector(".hamburger")
+    const navLinksLeft = document.querySelector(".nav__links__left")
+    const activeHamburger = document.querySelectorAll(".active__hamburger")
+    hamburger?.classList.toggle("active")
+    navLinksLeft?.classList.toggle("active")
+    activeHamburger?.forEach(node => node.classList.toggle("active"))
+}
+const closeHamburger = () => {
+    const hamburger = document.querySelector(".hamburger")
+    const navLinksLeft = document.querySelector(".nav__links__left")
+    const activeHamburger = document.querySelectorAll(".active__hamburger")
+    hamburger?.classList.remove("active")
+    navLinksLeft?.classList.remove("active")
+    activeHamburger?.forEach(node => node.classList.remove("active"))
+}
 
 export const Navbar = () => {
     const numInCart = useAppSelector(state => {
         return state.numInCart.numberInCart
     })
 
+
     return (
         <header className="navbar-wrapper">
-            <nav>
-                <ul className="nav__links">
-                    <li>
-                        <NavLink className="nav__link" to="/">
+            <nav className="nav__left">
+                <ul className="nav__links nav__links__left">
+                    <li className="hamburger__item">
+                        <NavLink onClick={() => closeHamburger()} className="nav__link" to="/">
                             Home
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink className="nav__link" to="/about">
+                    <li className="hamburger__item">
+                        <NavLink onClick={() => closeHamburger()} className="nav__link" to="/about">
                             About
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink className="nav__link" to="/shop">
+                    <li className="hamburger__item">
+                        <NavLink onClick={() => closeHamburger()} className="nav__link" to="/shop">
                             Shop
                         </NavLink>
                     </li>
+                    <li className="active__hamburger hamburger__item">
+                        <NavLink onClick={() => closeHamburger()} className="nav__link__icon" to="/favorites">
+                            <AiOutlineStar className="favorites" />
+                        </NavLink>
+                    </li>
+                    <li className="active__hamburger hamburger__item">
+                        <NavLink onClick={() => closeHamburger()} className="nav__link" to="/login">
+                            Login
+                        </NavLink>
+                    </li>
                 </ul>
+                <div className="hamburger" onClick={() => handleHamburgerClick()}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </div>
             </nav>
             <div className="nav__logo">
                 <NavLink className="logo" to="/">
                     PokeStore
                 </NavLink>
             </div>
-            <nav>
+            <nav className="nav__right">
                 <ul className="nav__links">
                     <li>
-                        <NavLink className="nav__link" to="/checkout">
-                            Cart
+                        <NavLink className="nav__link__icon shopping__bag__container" to="/checkout">
+                            <AiOutlineShopping className="shopping__bag" />
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink className="nav__link" to="/favorites">
-                            Fav
+                    <li className="hidden__hamburger">
+                        <NavLink className="nav__link__icon" to="/favorites">
+                            <AiOutlineStar className="favorites" />
                         </NavLink>
                     </li>
-                    <li>
+                    <li className="hidden__hamburger">
                         <NavLink className="nav__link" to="/login">
                             Login
                         </NavLink>
