@@ -1,7 +1,6 @@
 .greeting-wrapper {
     display: flex;
     justify-content: center;
-
 }
 
 .header {
@@ -9,8 +8,8 @@
     margin-top: 1em;
 }
 
-.pokeball-icon,
 .welcome-greeting {
     display: flex;
     justify-content: center;
+    align-items: center;
 }

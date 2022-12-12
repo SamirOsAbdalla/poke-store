@@ -2,6 +2,7 @@
 import React from 'react'
 import "./greeting.css"
 import { Searchbar } from '../Searchbar/searchbar'
+import { Pokeball } from '../Pokeball/Pokeball'
 
 export const Greeting = () => {
     return (
@@ -10,9 +11,7 @@ export const Greeting = () => {
                 <div className='welcome-greeting'>
                     Welcome to the PokeStore!
                 </div>
-                <div className='pokeball-icon'>
-                    Pokeball Icon
-                </div>
+                <Pokeball />
                 <Searchbar />
             </div>
         </div>
