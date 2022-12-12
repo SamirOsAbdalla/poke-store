@@ -22,6 +22,7 @@
 .nav__links {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 1.4em;
 }
 
@@ -175,7 +176,22 @@
 @media screen and (max-width: 500px) {
     .nav__logo {
         font-size: 2.5em;
-        margin-left: 1em;
-        margin-right: 1em;
+
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .nav__logo {
+        font-size: 2em;
+        margin-right: .3em;
+    }
+
+    .bar {
+        width: 1.2em;
+        height: 2.8px;
+    }
+
+    .nav__link__icon {
+        font-size: 1em;
     }
 }
