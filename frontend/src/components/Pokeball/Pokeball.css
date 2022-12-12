@@ -1,0 +1,52 @@
+:root {
+    --pokeball-dimension: 100px;
+}
+
+
+.pokeball__wrapper {
+    height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokeball {
+    height: var(--pokeball-dimension);
+    width: var(--pokeball-dimension);
+    border: 6px solid #383b4f;
+    border-radius: 50%;
+    position: relative;
+    background-image: linear-gradient(#f51939 calc(var(--pokeball-dimension)/2),
+            white calc(var(--pokeball-dimension)/2))
+}
+
+.pokeball:hover {
+    background-color: aqua;
+}
+
+.pokeball:before {
+    position: absolute;
+    content: "";
+    height: calc(var(--pokeball-dimension)/10);
+    width: var(--pokeball-dimension);
+    background-color: #383b4f;
+    top: calc(var(--pokeball-dimension) * .45);
+}
+
+
+.pokeball:after {
+    position: absolute;
+    content: "";
+    height: calc(var(--pokeball-dimension) * .36);
+    width: calc(var(--pokeball-dimension) * .36);
+    background-image: radial-gradient(#ffffff 0px,
+            #ffffff calc(var(--pokeball-dimension) * .36 /9),
+            #383b4f calc(var(--pokeball-dimension) * .36 /9),
+            #383b4f calc(var(--pokeball-dimension) * .36 /6),
+            #ffffff calc(var(--pokeball-dimension) * .36 /6),
+            #ffffff calc(var(--pokeball-dimension) * .128),
+            #383b4f calc(var(--pokeball-dimension) * .128));
+    border-radius: 50%;
+    top: calc(var(--pokeball-dimension) * .32);
+    left: calc(var(--pokeball-dimension) * .32);
+}
