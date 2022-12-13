@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 3em;
 }
 
 .pokeball {
@@ -21,16 +22,19 @@
 }
 
 .pokeball:hover {
-    background-color: aqua;
+    transform: rotate(360deg);
+    transition-timing-function: ease-in;
+    transition-duration: .5s;
 }
 
 .pokeball:before {
     position: absolute;
     content: "";
     height: calc(var(--pokeball-dimension)/10);
-    width: var(--pokeball-dimension);
     background-color: #383b4f;
     top: calc(var(--pokeball-dimension) * .45);
+    width: 107px;
+    left: -1.5px;
 }
 
 
