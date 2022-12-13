@@ -1,16 +1,17 @@
 :root {
     --navbar-heading-padding: 1em;
     --navbar-heading-margin: 5vw;
-    --navbar-component-font-color: #202f9e;
+    --navbar-component-font-color: rgb(251, 251, 251);
 }
 
+/*#202f9e   #cfe4f5*/
 .navbar-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: var(--navbar-heading-padding);
     padding-bottom: var(--navbar-heading-padding);
-    background-color: #ECF0F3;
+    background-color: #2f3640;
     width: 100%;
     min-height: 3.5em;
 }
@@ -187,8 +188,8 @@
     }
 
     .bar {
-        width: 1.2em;
-        height: 2.8px;
+        width: 1em;
+        height: 2px;
     }
 
     .nav__link__icon {
