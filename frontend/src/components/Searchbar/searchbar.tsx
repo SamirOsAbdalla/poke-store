@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { updatePokemonName } from "../../slices/search/searchSlice"
 import { useNavigate } from 'react-router-dom';
-
+import { AiOutlineSearch } from "react-icons/ai"
 
 //This component will search for a specific pokemon
 
@@ -56,12 +56,12 @@ export const Searchbar = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-entries">
                     <div className='label'>
-                        <label>Find a pokemon below or click shop!</label>
+                        <label>Search for a pokemon below or click shop!</label>
                     </div>
-                    <div className="search-modules">
-                        <input type="text" value={searchedPokemon} onChange={handlePokemonNameChange} />
-                        <button type="submit" onClick={submitUpdatedName}>
-                            Search
+                    <div className="search__modules">
+                        <input className="search__input" type="text" value={searchedPokemon} onChange={handlePokemonNameChange} />
+                        <button className="search__button" type="submit" onClick={submitUpdatedName}>
+                            <AiOutlineSearch className="search__icon" />
                         </button>
                     </div>
                 </div>
