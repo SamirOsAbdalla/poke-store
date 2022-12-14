@@ -22,6 +22,16 @@ const closeHamburger = () => {
     activeHamburger?.forEach(node => node.classList.remove("active"))
 }
 
+window.addEventListener("resize", function (event) {
+
+    if (this.window.innerWidth > 890) {
+        const hamburger = document.querySelector(".hamburger")
+        const navLinksLeft = document.querySelector(".nav__links__left")
+        hamburger?.classList.remove("active")
+        navLinksLeft?.classList.remove("active")
+    }
+})
+
 export const Navbar = () => {
     const numInCart = useAppSelector(state => {
         return state.numInCart.numberInCart

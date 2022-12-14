@@ -6,6 +6,8 @@
 
 /*#202f9e   #cfe4f5*/
 .navbar-wrapper {
+    position: fixed;
+    z-index: 9999;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,7 +103,7 @@
     margin: 5px auto;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    background-color: #202f9e;
+    background-color: rgb(251, 251, 251);
 }
 
 .active__hamburger {
@@ -155,10 +157,10 @@
     .nav__links__left {
         position: fixed;
         left: -110%;
-        top: 5em;
+        top: 5.52em;
         gap: 0;
         flex-direction: column;
-        background-color: #ECF0F3;
+        background-color: #2f3640;
         width: 100%;
         text-align: center;
         transition: 0.3s;
@@ -170,6 +172,8 @@
 
     .nav__links__left.active {
         left: 0;
+        z-index: 9999;
+        position: block;
     }
 
 }
