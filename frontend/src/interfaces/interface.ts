@@ -7,7 +7,8 @@ export interface pokemonInfo {
     abilities: Array<any>,
     height: number,
     weight: number,
-    kind: string
+    kind: string,
+    sprite: string
 }
 
 export interface errorMessage {
