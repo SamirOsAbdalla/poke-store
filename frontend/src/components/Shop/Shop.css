@@ -1,0 +1,9 @@
+.shop__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2em;
+    margin-right: 2em;
+    padding-top: 10em;
+}
