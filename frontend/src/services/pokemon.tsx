@@ -3,10 +3,6 @@ import { errorMessage } from "../interfaces/interface";
 import { useAppSelector } from "../app/hooks";
 const baseUrl = 'http://localhost:3001'
 
-interface PropTypes {
-    pokemon_name: string,
-    allPokemon: string
-}
 
 
 const getPokepage = (pokemon_name: string) => {
