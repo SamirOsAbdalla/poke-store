@@ -20,6 +20,9 @@ export const PokemonCard = (props: CardPropType) => {
             <div className="pokemon__image">
                 <img src={props.sprite} />
             </div>
+            <div className="pokemon__price">
+                $19.95
+            </div>
             <div className="pokemon__buttons">
                 <button className="pokemon__cart__button">
                     <AiOutlineShopping className="shopping__button__icon" />

@@ -4,7 +4,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 3em;
+}
+
+.pokemon__price {
+    color: rgb(255, 248, 248);
+    font-size: 1.2em;
+    margin-bottom: .7em;
+    margin-top: 1em;
 }
 
 .pokemon__buttons {
