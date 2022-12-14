@@ -14,7 +14,7 @@ app.get('/', async (req: Request, res: Response) => {
         cacheOptions: { maxAge: 500000, exclude: { query: false } },
     })
 
-    const allPokemon = await api.listPokemons(0, 1154).then(response => {
+    const allPokemon = await api.listPokemons(0, 905).then(response => {
         return response;
     })
 
@@ -29,14 +29,14 @@ interface pokemonInfo {
     height: number,
     weight: number,
     kind: string,
-    name: string
+    name: string,
+    sprite: string
 }
 
 app.get("/shop/:pokemon_name", async (req: Request, res: Response) => {
     const api = new PokemonClient({
         cacheOptions: { maxAge: 500000, exclude: { query: false } },
     })
-
     //fetches name from path parameters
     const pokemonName = req.params['pokemon_name']
 
@@ -54,7 +54,8 @@ app.get("/shop/:pokemon_name", async (req: Request, res: Response) => {
             height: fetchedPokemon.height,
             weight: fetchedPokemon.weight,
             kind: "pokemon",
-            name: fetchedPokemon.forms[0].name
+            name: fetchedPokemon.forms[0].name,
+            sprite: fetchedPokemon.sprites.front_default as string
         }
         res.send(responseObject)
     }

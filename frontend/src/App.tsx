@@ -12,6 +12,7 @@ import pokemonService from "./services/pokemon"
 import { setAllPokemonNames } from './slices/allPokemon/allPokemonNamesSlice';
 import { Shop } from './components/Shop/Shop';
 import { CheckoutPage } from './components/CheckoutPage/checkoutpage';
+import { PokemonCard } from './components/PokemonCard/PokemonCard';
 
 const App = () => {
 
@@ -27,6 +28,8 @@ const App = () => {
     const nameArray = [];
 
     for (let i = 0; i < results.length; i++) {
+      results[i].sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png`
+      results[i].name = results[i].name[0].toUpperCase() + results[i].name.substring(1)
       nameArray.push(results[i])
     }
     dispatch(setAllPokemonNames(JSON.stringify(nameArray)))
