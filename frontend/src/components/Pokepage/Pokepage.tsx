@@ -19,7 +19,8 @@ export const Pokepage = () => {
         height: 0,
         weight: 0,
         kind: "",
-        name: ""
+        name: "",
+        sprite: ""
     })
 
     const [isPokemonFetched, setIsPokemonFetched] = useState<boolean>(false)
@@ -78,6 +79,7 @@ export const Pokepage = () => {
             <button onClick={addPokemonToCart}>Add to cart</button>
             <div>
                 Id: {currentPokemonPage.id}
+                <img src={currentPokemonPage.sprite} />
             </div>
         </div >
 
