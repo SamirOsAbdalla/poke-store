@@ -1,0 +1,19 @@
+.stat__type {
+    width: 1em;
+}
+
+.stat__value {
+    margin-left: 2em;
+}
+
+.entire__stat__display {
+    display: flex;
+}
+
+.stats__container {
+
+    margin-left: 1em;
+    border-radius: 5px;
+    width: 200px;
+    margin-bottom: 1.1em;
+}
