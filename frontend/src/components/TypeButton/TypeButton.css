@@ -1,0 +1,17 @@
+.type__button {
+    width: 6em;
+    padding-left: .4em;
+    padding-right: .4em;
+    padding-top: .3em;
+    padding-bottom: .3em;
+    font-size: 1.1em;
+    border-radius: 50px;
+    border: 1.7px solid #000000;
+    color: #f9f9f9;
+    box-shadow: inset 0px 0px 4px 2px rgb(242 249 250);
+    font-weight: bold;
+}
+
+.type__button:hover {
+    transform: translateY(-5px);
+}
