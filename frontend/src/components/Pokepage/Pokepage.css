@@ -1,0 +1,98 @@
+.pokepage__wrapper {
+    padding-top: 10em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pokepage__name {
+    font-size: 3em;
+}
+
+.pokepage__heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokepage__middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+    flex-wrap: wrap;
+    gap: 3em;
+}
+
+.stats__container {
+
+    margin-left: 1em;
+    border-radius: 5px;
+    width: 200px;
+    margin-bottom: 1.1em;
+}
+
+.pokemon__stats__chart {
+    max-width: 20em;
+}
+
+
+.stats {
+    text-align: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    border: 5px;
+    border-radius: .6em 1em 1em .6em;
+}
+
+.stat__type {
+    width: 1em;
+}
+
+.stat__value {
+    margin-left: 2em;
+}
+
+.entire__stat__display {
+    display: flex;
+}
+
+.HP {
+    background-color: rgb(0, 156, 247)
+}
+
+.ATK {
+    background-color: rgb(254, 15, 15)
+}
+
+.DEF {
+    background-color: green;
+}
+
+.SPATK {
+    background-color: rgb(141, 28, 246);
+}
+
+.SPDEF {
+    background-color: rgb(6, 17, 62);
+}
+
+.SPE {
+    background-color: aquamarine;
+}
+
+.pokepage__sprite__image__container {
+    width: 300px;
+    height: 300px;
+}
+
+.pokepage__sprite__image {
+    width: 300px;
+    height: 300px;
+}
