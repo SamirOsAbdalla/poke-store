@@ -9,6 +9,9 @@ import { updatePokemonName } from '../../slices/search/searchSlice';
 import { increaseNumberInCart } from '../../slices/numInCart/numInCartSlice';
 import { storeNewPokemon } from '../../slices/storedCartPokemon/storedCartPokemon';
 import "./Pokepage.css"
+import { PokemonBar } from '../PokemonBar/PokemonBar';
+import { TypeButton } from '../TypeButton/TypeButton';
+import { current } from '@reduxjs/toolkit';
 
 export const Pokepage = () => {
 
@@ -77,7 +80,7 @@ export const Pokepage = () => {
     }, [])
 
 
-
+    console.log(currentPokemonPage.types)
     //add error page later
     return (
         <div className="pokepage__wrapper">
@@ -86,82 +89,21 @@ export const Pokepage = () => {
                     {name[0].toUpperCase() + name.substring(1) + "  " + "#" + currentPokemonPage.id}
                 </div>
                 <div className='pokepage__type__buttons'>
-                    <button>
-                        Type
-                    </button>
+                    {currentPokemonPage.types.map(pokeType => <TypeButton key={pokeType.type.name} type={pokeType.type.name} />)}
                 </div>
             </div>
             <div className="pokepage__middle">
                 <div className="pokemon__stats__chart">
-
-                    <div className="entire__stat__display">
-                        <h3 className="stat__type">HP</h3>
-                        <h3 className="stat__value">{stats[0]}</h3>
-                        <div className="stats__container">
-                            <div style={{ width: stats[0] * 1.4 }} className="stats HP">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="entire__stat__display">
-                        <h3 className="stat__type">Atk</h3>
-                        <h3 className="stat__value">{stats[1]}</h3>
-                        <div className="stats__container">
-                            <div style={{ width: stats[1] * 1.4 }} className="stats ATK">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="entire__stat__display">
-                        <h3 className="stat__type">Def</h3>
-                        <h3 className="stat__value">{stats[2]}</h3>
-                        <div className="stats__container">
-                            <div style={{ width: stats[2] * 1.4 }} className="stats DEF">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="entire__stat__display">
-                        <h3 className="stat__type">SpA</h3>
-                        <h3 className="stat__value">{stats[3]}</h3>
-                        <div className="stats__container">
-                            <div style={{ width: stats[3] * 1.4 }} className="stats SPATK">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="entire__stat__display">
-                        <h3 className="stat__type">SpD</h3>
-                        <h3 className="stat__value">{stats[4]}</h3>
-                        <div className="stats__container">
-                            <div style={{ width: stats[4] * 1.4 }} className="stats SPDEF">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="entire__stat__display">
-                        <h3 className="stat__type">Spe</h3>
-                        <h3 className="stat__value">{stats[5]}</h3>
-                        <div className="stats__container">
-                            <div style={{ width: stats[5] * 1.4 }} className="stats SPE">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div className="entire__stat__display">
-                        <div className="entire__stat__display">
-                            <h3 className="stat__type">Total</h3>
-                            <h3 className="stat__value">{stats.reduce(
-                                (accumulator, currentValue) => accumulator + currentValue,
-                                0
-                            )}</h3>
-                        </div>
-                    </div>
+                    <PokemonBar statType='HP' statValue={stats[0]} color="rgb(0, 156, 247)" />
+                    <PokemonBar statType='Atk' statValue={stats[1]} color="rgb(254, 15, 15)" />
+                    <PokemonBar statType='Def' statValue={stats[2]} color="rgb(6, 17, 62)" />
+                    <PokemonBar statType='SpA' statValue={stats[3]} color="rgb(247, 157, 55)" />
+                    <PokemonBar statType='SpD' statValue={stats[4]} color="rgb(87, 95, 97)" />
+                    <PokemonBar statType='Spe' statValue={stats[5]} color="aquamarine" />
+                    <PokemonBar statType='Total' statValue={stats.reduce(
+                        (accumulator, currentValue) => accumulator + currentValue,
+                        0
+                    )} color="" />
                 </div>
                 <div className="pokepage__sprite__image__container">
                     <img className="pokepage__sprite__image" src={currentPokemonPage.sprite} />
