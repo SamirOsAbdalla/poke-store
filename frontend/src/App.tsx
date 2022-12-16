@@ -30,6 +30,8 @@ const App = () => {
     for (let i = 0; i < results.length; i++) {
       results[i].sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png`
       results[i].name = results[i].name[0].toUpperCase() + results[i].name.substring(1)
+      results[i].price = "$" + ((i + 1) * 1.783).toFixed(2)
+      results[i].id = i + 1;
       nameArray.push(results[i])
     }
     dispatch(setAllPokemonNames(JSON.stringify(nameArray)))
@@ -72,11 +74,11 @@ const App = () => {
 
 
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <div className="App">
         <Navbar />
       </div>
-      <Routes>
+      <Routes >
         <Route path="/" element={<Greeting />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:pokemon_name" element={<Pokepage />} />
