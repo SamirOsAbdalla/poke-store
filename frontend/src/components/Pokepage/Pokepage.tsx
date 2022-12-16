@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import pokemonService from "../../services/pokemon"
 import { useParams } from 'react-router-dom';
 import { pokemonInfo, errorMessage } from '../../interfaces/interface'
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { updatePokemonName } from '../../slices/search/searchSlice';
 import { increaseNumberInCart } from '../../slices/numInCart/numInCartSlice';
 import { storeNewPokemon } from '../../slices/storedCartPokemon/storedCartPokemon';
@@ -30,12 +29,11 @@ export const Pokepage = () => {
     })
 
     const [isPokemonFetched, setIsPokemonFetched] = useState<boolean>(false)
-    const [doesPokemonExist, setDoesPokemonExist] = useState<boolean>(false)
     const [stats, setStats] = useState<number[]>([0, 0, 0, 0, 0, 0])
     const [pokemonEntry, setPokemonEntry] = useState<string>("")
-
+    const [pokemonPrice, setPokemonPrice] = useState<string>("")
+    const [updatedName, setUpdatedName] = useState<string>("")
     const name = useParams().pokemon_name as string
-    const dispatch = useAppDispatch();
 
     const getPokemonEntry = async () => {
         const pokemonEntry = await pokemonService.getPokemonEntry(name).then((entry: errorMessage | string) => entry)
@@ -53,9 +51,15 @@ export const Pokepage = () => {
 
         if (pokemon.kind === "pokemon") {
             const narrowedPokemon: pokemonInfo = pokemon as pokemonInfo
+
+            const pokemonNames = window.localStorage.getItem("ALL_POKEMON_NAMES")
+            if (pokemonNames) {
+                let allPokemonNames = JSON.parse(pokemonNames)
+                setPokemonPrice(allPokemonNames[narrowedPokemon.id - 1].price)
+            }
             setCurrentPokemonPage(narrowedPokemon)
+            setUpdatedName(narrowedPokemon.name[0].toUpperCase() + narrowedPokemon.name.substring(1))
             setIsPokemonFetched(true)
-            setDoesPokemonExist(true)
 
             let statsArray: number[] = [];
             narrowedPokemon.stats.forEach(stat => {
@@ -71,14 +75,6 @@ export const Pokepage = () => {
     }
 
 
-    const addPokemonToCart = () => {
-        if (doesPokemonExist) {
-            dispatch(increaseNumberInCart(1))
-            dispatch(storeNewPokemon(currentPokemonPage))
-        }
-    }
-
-
     useEffect(() => {
 
         //fetch searched pokemon from pokemon on initial render
@@ -87,6 +83,7 @@ export const Pokepage = () => {
             getPokemonEntry()
         }
     }, [])
+
 
     //add error page later
     return (
@@ -113,11 +110,11 @@ export const Pokepage = () => {
                         </div>
 
                         <div className="pokepage__price">
-                            {"Price:  $20.00"}
+                            {`Price: ${pokemonPrice}`}
                         </div>
                         <div className="pokepage__shop__buttons">
-                            <CartButton />
-                            <FavButton />
+                            <CartButton name={updatedName} sprite={currentPokemonPage.sprite} price={pokemonPrice} />
+                            <FavButton name={currentPokemonPage.name} sprite={currentPokemonPage.sprite} />
                         </div>
                     </div>
                 </div>
