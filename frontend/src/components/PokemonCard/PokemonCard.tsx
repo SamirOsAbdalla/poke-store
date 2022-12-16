@@ -2,6 +2,8 @@ import React from 'react'
 import "./PokemonCard.css"
 import { pokemonInfo } from '../../interfaces/interface'
 import { AiOutlineShopping, AiOutlineStar } from 'react-icons/ai'
+import { CartButton } from '../ShoppingButtons/CartButton'
+import { FavButton } from '../ShoppingButtons/FavButton'
 
 type CardPropType = Pick<pokemonInfo, "name" | "sprite">
 
@@ -24,12 +26,8 @@ export const PokemonCard = (props: CardPropType) => {
                 $19.95
             </div>
             <div className="pokemon__buttons">
-                <button className="pokemon__cart__button">
-                    <AiOutlineShopping className="shopping__button__icon" />
-                </button>
-                <button className='pokemon__favorite__button'>
-                    <AiOutlineStar className="favorite__button__icon" />
-                </button>
+                <CartButton />
+                <FavButton />
             </div>
         </div>
     )
