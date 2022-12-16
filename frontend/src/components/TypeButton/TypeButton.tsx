@@ -24,6 +24,7 @@ enum TypeColor {
   electric = "#e79306",
   dragon = "#6f5bd9",
   bug = "#88970d",
+  psychic = "#dd3368"
 }
 
 export const TypeButton = (props: PropType) => {
