@@ -2,7 +2,12 @@ import React from 'react'
 import { AiOutlineStar } from 'react-icons/ai'
 import "./FavButton.css"
 
-export const FavButton = () => {
+interface PropType {
+    name: string,
+    sprite: string
+}
+
+export const FavButton = (props: PropType) => {
     return (
         <div>
             <button className='pokemon__favorite__button'>

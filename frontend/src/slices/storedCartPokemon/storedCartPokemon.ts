@@ -2,8 +2,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import store from "../../app/store";
 import { pokemonInfo } from "../../interfaces/interface"
 
+interface StoredPokemonType {
+    name: string,
+    sprite: string,
+    quantity: number,
+    price: string
+}
+
 type InitialState = {
-    storedCartPokemon: pokemonInfo[]
+    storedCartPokemon: StoredPokemonType[]
 }
 
 const initialState: InitialState = {
@@ -15,13 +22,30 @@ const storedCartPokemonSlice = createSlice({
     initialState,
 
     reducers: {
-        storeNewPokemon: (state, action: PayloadAction<pokemonInfo>) => {
+        storeNewPokemon: (state, action: PayloadAction<StoredPokemonType>) => {
             if (action.payload.name != "") {
-                state.storedCartPokemon.push(action.payload)
+
+                //check if pokemon exists already
+                //if it does increase pokemon's quantity
+                const payload = action.payload
+                const storedPokemon = state.storedCartPokemon
+
+                const index = storedPokemon.findIndex((pokemon) =>
+                    pokemon.name === payload.name
+                )
+
+                if (index === -1) {
+                    state.storedCartPokemon.push(action.payload)
+                } else {
+                    state.storedCartPokemon[index].quantity++;
+                }
             }
         },
 
         removePokemonFromCart: (state, action: PayloadAction<string>) => {
+
+            //need to check quantity to see if >1 in order to decrease quantity
+            //instead of removing pokemon entirely
             const storedPokemon = state.storedCartPokemon;
             const filteredPokemon = storedPokemon.filter(pokemon =>
                 pokemon.name !== action.payload
