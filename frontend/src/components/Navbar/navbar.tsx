@@ -22,15 +22,7 @@ const closeHamburger = () => {
     activeHamburger?.forEach(node => node.classList.remove("active"))
 }
 
-window.addEventListener("resize", function (event) {
 
-    if (this.window.innerWidth > 890) {
-        const hamburger = document.querySelector(".hamburger")
-        const navLinksLeft = document.querySelector(".nav__links__left")
-        hamburger?.classList.remove("active")
-        navLinksLeft?.classList.remove("active")
-    }
-})
 
 export const Navbar = () => {
     const numInCart = useAppSelector(state => {
@@ -84,6 +76,9 @@ export const Navbar = () => {
                     <li>
                         <NavLink className="nav__link__icon shopping__bag__container" to="/checkout">
                             <AiOutlineShopping className="shopping__bag" />
+                            <div className="shopping__number__items">
+                                {numInCart}
+                            </div>
                         </NavLink>
                     </li>
                     <li className="hidden__hamburger">

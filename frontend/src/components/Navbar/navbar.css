@@ -37,12 +37,31 @@
     padding: 0 .5em;
 }
 
-.nav__links li a:hover {
+.nav__link:hover {
     color: rgb(251, 251, 251);
     box-shadow: 4px 4px 8px #80808072,
         -4px -4px 8px #a8a7a66b;
     background-color: #ee1515;
     border-radius: 6px;
+}
+
+.shopping__bag:hover,
+.favorites:hover {
+    color: rgb(251, 251, 251);
+    box-shadow: 4px 4px 8px #80808072,
+        -4px -4px 8px #a8a7a66b;
+    background-color: #ee1515;
+    border-radius: 6px;
+}
+
+.shopping__bag,
+.favorites {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+    color: var(--navbar-component-font-color);
+    font-size: 1.3em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    transition: 0.4s ease;
 }
 
 .nav__link {
@@ -81,12 +100,21 @@
 }
 
 .nav__link__icon {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: none;
-    color: var(--navbar-component-font-color);
-    font-size: 1.3em;
-    padding: 0.2em 0.5em 0.2em 0.5em;
-    transition: 0.4s ease;
+}
+
+.shopping__number__items {
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    background: rgb(156, 15, 15);
+    border-radius: 50%;
+    padding: 5px 8px;
+    position: relative;
+    text-align: center;
+    left: -18px;
+    top: -10px;
+    text-decoration: none;
 }
 
 .hamburger {
