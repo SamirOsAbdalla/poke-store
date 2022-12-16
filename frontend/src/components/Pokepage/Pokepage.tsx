@@ -12,6 +12,8 @@ import "./Pokepage.css"
 import { PokemonBar } from '../PokemonBar/PokemonBar';
 import { TypeButton } from '../TypeButton/TypeButton';
 import { current } from '@reduxjs/toolkit';
+import { CartButton } from '../ShoppingButtons/CartButton';
+import { FavButton } from '../ShoppingButtons/FavButton';
 
 export const Pokepage = () => {
 
@@ -29,9 +31,16 @@ export const Pokepage = () => {
 
     const [isPokemonFetched, setIsPokemonFetched] = useState<boolean>(false)
     const [doesPokemonExist, setDoesPokemonExist] = useState<boolean>(false)
-    const [stats, setStats] = useState<number[]>([])
+    const [stats, setStats] = useState<number[]>([0, 0, 0, 0, 0, 0])
+    const [pokemonEntry, setPokemonEntry] = useState<string>("")
+
     const name = useParams().pokemon_name as string
     const dispatch = useAppDispatch();
+
+    const getPokemonEntry = async () => {
+        const pokemonEntry = await pokemonService.getPokemonEntry(name).then((entry: errorMessage | string) => entry)
+        setPokemonEntry(pokemonEntry as string)
+    }
 
 
     const fetchPokemon = async () => {
@@ -75,41 +84,63 @@ export const Pokepage = () => {
         //fetch searched pokemon from pokemon on initial render
         if (!isPokemonFetched) {
             fetchPokemon()
+            getPokemonEntry()
         }
-
     }, [])
 
-
-    console.log(currentPokemonPage.types)
     //add error page later
     return (
         <div className="pokepage__wrapper">
-            <div className='pokepage__heading'>
-                <div className="pokepage__name">
-                    {name[0].toUpperCase() + name.substring(1) + "  " + "#" + currentPokemonPage.id}
+            <div className='pokepage__container'>
+                <div className="pokepage__top">
+                    <div className="pokepage__sprite__image__container">
+                        {isPokemonFetched && <img className="pokepage__sprite__image" src={currentPokemonPage.sprite} />}
+                    </div>
+                    <div className='pokepage__heading'>
+                        <div className="pokepage__name">
+                            {name[0].toUpperCase() + name.substring(1)}
+                        </div>
+                        <div className='pokepage__type__buttons'>
+                            {currentPokemonPage.types.map(pokeType => <TypeButton key={pokeType.type.name} type={pokeType.type.name} />)}
+                        </div>
+                        <div className="pokepage__entry">
+                            <div className="pokepage__entry__description">
+                                Description:
+                            </div>
+                            <div className="pokepage__entry__entry">
+                                {pokemonEntry}
+                            </div>
+                        </div>
+
+                        <div className="pokepage__price">
+                            {"Price:  $20.00"}
+                        </div>
+                        <div className="pokepage__shop__buttons">
+                            <CartButton />
+                            <FavButton />
+                        </div>
+                    </div>
                 </div>
-                <div className='pokepage__type__buttons'>
-                    {currentPokemonPage.types.map(pokeType => <TypeButton key={pokeType.type.name} type={pokeType.type.name} />)}
+                <div className="pokepage__middle">
+                    <div className='stats__chart__heading'>
+                        Stats Table
+                    </div>
+                    <div className="pokemon__stats__chart">
+                        <PokemonBar statType='HP' statValue={stats[0]} color="rgb(254, 15, 15)" />
+                        <PokemonBar statType='Atk' statValue={stats[1]} color="rgb(247, 157, 55)" />
+                        <PokemonBar statType='Def' statValue={stats[2]} color="rgb(244, 228, 5)" />
+                        <PokemonBar statType='SpA' statValue={stats[3]} color="rgb(0, 156, 247)" />
+                        <PokemonBar statType='SpD' statValue={stats[4]} color="rgb(65, 218, 38)" />
+                        <PokemonBar statType='Spe' statValue={stats[5]} color="rgb(241, 0, 144)" />
+                        <PokemonBar statType='Total' statValue={stats.reduce(
+                            (accumulator, currentValue) => accumulator + currentValue,
+                            0
+                        )} color="" />
+                    </div>
                 </div>
             </div>
-            <div className="pokepage__middle">
-                <div className="pokemon__stats__chart">
-                    <PokemonBar statType='HP' statValue={stats[0]} color="rgb(0, 156, 247)" />
-                    <PokemonBar statType='Atk' statValue={stats[1]} color="rgb(254, 15, 15)" />
-                    <PokemonBar statType='Def' statValue={stats[2]} color="rgb(6, 17, 62)" />
-                    <PokemonBar statType='SpA' statValue={stats[3]} color="rgb(247, 157, 55)" />
-                    <PokemonBar statType='SpD' statValue={stats[4]} color="rgb(87, 95, 97)" />
-                    <PokemonBar statType='Spe' statValue={stats[5]} color="aquamarine" />
-                    <PokemonBar statType='Total' statValue={stats.reduce(
-                        (accumulator, currentValue) => accumulator + currentValue,
-                        0
-                    )} color="" />
-                </div>
-                <div className="pokepage__sprite__image__container">
-                    <img className="pokepage__sprite__image" src={currentPokemonPage.sprite} />
-                </div>
-            </div>
-            <button onClick={addPokemonToCart}>Add to cart</button>
+
+
         </div >
 
     )
