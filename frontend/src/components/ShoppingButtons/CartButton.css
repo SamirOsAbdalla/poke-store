@@ -1,0 +1,22 @@
+.pokemon__cart__button {
+    background-color: #c40404;
+    border-radius: 6px;
+    border: none;
+    color: rgb(255, 248, 248);
+    width: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: .3em;
+    padding-bottom: .4em;
+}
+
+.shopping__button__icon {
+    font-size: 1.5em;
+}
+
+.pokemon__cart__button:hover {
+    transform: translateY(-3px);
+    background-color: #fc0808;
+    cursor: pointer;
+}
