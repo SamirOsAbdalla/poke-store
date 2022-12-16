@@ -59,7 +59,7 @@ export const Searchbar = () => {
                         <label>Search for a pokemon below or click shop!</label>
                     </div>
                     <div className="search__modules">
-                        <input className="search__input" type="text" value={searchedPokemon} onChange={handlePokemonNameChange} />
+                        <input placeholder="Search..." className="search__input" type="text" value={searchedPokemon} onChange={handlePokemonNameChange} />
                         <button className="search__button" type="submit" onClick={submitUpdatedName}>
                             <AiOutlineSearch className="search__icon" />
                         </button>
