@@ -23,6 +23,22 @@ const getPokepage = (pokemon_name: string) => {
 
 }
 
+const getPokemonEntry = (pokemon_name: string) => {
+    const pokemonEntry = axios.get(`${baseUrl}/entry/${pokemon_name}`)
+    return pokemonEntry.then(response => {
+        if (response.status === 400) {
+
+            const errorMessageObject: errorMessage = {
+                message: "Error finding pokemon",
+                kind: "error"
+            }
+
+            return (errorMessageObject)
+        }
+        return response.data as string
+    })
+}
+
 const getAllPokemon = async () => {
     const allPokemon = await axios.get(`${baseUrl}`)
 
@@ -31,5 +47,6 @@ const getAllPokemon = async () => {
 
 export default {
     getPokepage,
-    getAllPokemon
+    getAllPokemon,
+    getPokemonEntry
 }
