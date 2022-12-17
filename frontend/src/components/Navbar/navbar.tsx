@@ -3,8 +3,23 @@ import "./navbar.css"
 import { NavLink } from "react-router-dom"
 import { useAppSelector } from "../../app/hooks";
 import { Cart } from "../Cart/Cart";
-import { AiOutlineShopping, AiOutlineStar } from "react-icons/ai"
-
+import { AiOutlineShoppingCart, AiOutlineStar } from "react-icons/ai"
+import { CartSection } from "../CartSection/CartSection";
+{/*<div className="cart__hidden cart__window__wrapper">
+                            <div className="cart__window__heading">
+                                Cart
+                            </div>
+                            <div className="displayed__cart__pokemon">
+                                {allPokemonInCart.map(pokemon =>
+                                    <CartSection
+                                        name={pokemon.name}
+                                        key={pokemon.name}
+                                        sprite={pokemon.sprite}
+                                        quantity={pokemon.quantity}
+                                        price={pokemon.price}
+                                    />)}
+                            </div>
+                        </div>*/}
 const handleHamburgerClick = () => {
     const hamburger = document.querySelector(".hamburger")
     const navLinksLeft = document.querySelector(".nav__links__left")
@@ -23,15 +38,14 @@ const closeHamburger = () => {
 }
 
 
-
 export const Navbar = () => {
     const numInCart = useAppSelector(state => {
         return state.numInCart.numberInCart
     })
-
+    const allPokemonInCart = useAppSelector(state => state.storedCartPokemon.storedCartPokemon)
 
     return (
-        <header className="navbar-wrapper">
+        <header className="navbar-wrapper" >
             <nav className="nav__left">
                 <ul className="nav__links nav__links__left">
                     <li className="hamburger__item">
@@ -75,7 +89,7 @@ export const Navbar = () => {
                 <ul className="nav__links">
                     <li>
                         <NavLink className="nav__link__icon shopping__bag__container" to="/checkout">
-                            <AiOutlineShopping className="shopping__bag" />
+                            <AiOutlineShoppingCart onClick={closeHamburger} className="shopping__bag" />
                             <div className="shopping__number__items">
                                 {numInCart}
                             </div>

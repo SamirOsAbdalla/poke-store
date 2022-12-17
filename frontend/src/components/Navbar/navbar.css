@@ -4,6 +4,29 @@
     --navbar-component-font-color: rgb(251, 251, 251);
 }
 
+/*.cart__window__heading {
+    padding-top: .8em;
+    font-size: 2em;
+    padding-left: 1em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 1em;
+}
+
+.cart__window__wrapper {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 5.43em;
+    right: 12em;
+    overflow-y: auto;
+    height: 20em;
+    width: 20em;
+    background-color: rgb(247, 245, 242);
+    border: 2px solid black
+}
+
+.displayed__cart__pokemon {}*/
+
 /*#202f9e   #cfe4f5*/
 .navbar-wrapper {
     position: fixed;
@@ -15,7 +38,11 @@
     padding-bottom: var(--navbar-heading-padding);
     background-color: #2f3640;
     width: 100%;
-    min-height: 3.5em;
+    height: 3.5em;
+}
+
+.nav__link__icon {
+    cursor: default
 }
 
 .nav__left {
@@ -52,6 +79,7 @@
         -4px -4px 8px #a8a7a66b;
     background-color: #ee1515;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .shopping__bag,
@@ -112,8 +140,8 @@
     padding: 5px 8px;
     position: relative;
     text-align: center;
-    left: -18px;
-    top: -10px;
+    left: -12.5px;
+    top: -13px;
     text-decoration: none;
 }
 
@@ -138,6 +166,20 @@
     display: none;
 }
 
+/*.cart__window__heading:after {
+    content: "";
+    position: absolute;
+    width: 25%;
+    top: 2em;
+    left: 1em;
+    height: 2px;
+    background-color: black;
+}
+
+.cart__hidden {
+    display: none;
+}*/
+
 @media screen and (max-width: 1000px) {
     .nav__left {
         margin-left: 1vw;
@@ -145,6 +187,10 @@
 
     .nav__right {
         margin-right: 1vw;
+    }
+
+    .cart__window__wrapper {
+        right: 2em;
     }
 }
 
@@ -185,7 +231,7 @@
     .nav__links__left {
         position: fixed;
         left: -110%;
-        top: 5.52em;
+        top: 5.4em;
         gap: 0;
         flex-direction: column;
         background-color: #2f3640;
@@ -204,6 +250,9 @@
         position: block;
     }
 
+    .cart__window__wrapper {
+        right: 1em;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -214,6 +263,11 @@
 }
 
 @media screen and (max-width: 400px) {
+
+    .cart__window__wrapper {
+        width: 15em;
+    }
+
     .nav__logo {
         font-size: 2em;
         margin-right: .3em;
