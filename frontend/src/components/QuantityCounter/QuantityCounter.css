@@ -1,0 +1,15 @@
+.quantity__wrapper {
+    width: 4em;
+    border-radius: 1em;
+    border: none;
+    outline: none;
+    background-color: #e6dddd;
+    padding-left: .4em;
+    color: rgb(6, 6, 6);
+    position: relative;
+    bottom: 2px;
+}
+
+.quantity__wrapper:hover {
+    cursor: pointer;
+}
