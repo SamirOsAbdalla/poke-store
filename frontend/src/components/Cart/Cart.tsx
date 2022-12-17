@@ -8,18 +8,39 @@ import { pokemonInfo } from '../../interfaces/interface'
 export const Cart = () => {
 
     const allPokemonInCart = useAppSelector(state => state.storedCartPokemon.storedCartPokemon)
+    const numInCart = useAppSelector(state => state.numInCart.numberInCart)
+
+    const [inputQuantity, setInputQuantity] = useState()
     return (
-        <div className='cart-wrapper'>
-            <div className='cart-section-wrapper'>
-                {allPokemonInCart.map(pokemon =>
-                    <CartSection
-                        name={pokemon.name}
-                        key={pokemon.name}
-                        sprite={pokemon.sprite}
-                        quantity={pokemon.quantity}
-                        price={pokemon.price}
-                    />)}
+        <div className="cart__wrapper">
+            <div className="cart__heading">
+                <div className='cart__shopping__text'>
+                    My Shopping Cart
+                </div>
+                <div className="cart__number__text">
+                    {numInCart} items
+                </div>
             </div>
-        </div>
+            <table className="cart__table">
+                <thead>
+                    <tr>
+                        <th className="product__heading">Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    {allPokemonInCart.map(pokemon =>
+                        <CartSection name={pokemon.name}
+                            sprite={pokemon.sprite}
+                            quantity={pokemon.quantity}
+                            key={pokemon.name}
+                            price={pokemon.price} />
+                    )}
+                </tbody>
+            </table>
+        </div >
     )
 }
