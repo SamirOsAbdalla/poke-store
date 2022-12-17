@@ -37,7 +37,7 @@ const storedCartPokemonSlice = createSlice({
                 if (index === -1) {
                     state.storedCartPokemon.push(action.payload)
                 } else {
-                    state.storedCartPokemon[index].quantity++;
+                    state.storedCartPokemon[index].quantity += action.payload.quantity;
                 }
             }
         },
