@@ -9,6 +9,8 @@
     background-color: rgb(221, 238, 238);
 }
 
+
+
 .pokepage__container {
     height: auto;
     width: 60%;
@@ -92,7 +94,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: .2em;
+    margin-bottom: .5em;
+    gap: 1em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.3em;
 }

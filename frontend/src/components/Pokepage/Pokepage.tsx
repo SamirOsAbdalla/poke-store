@@ -13,6 +13,7 @@ import { TypeButton } from '../TypeButton/TypeButton';
 import { current } from '@reduxjs/toolkit';
 import { CartButton } from '../ShoppingButtons/CartButton';
 import { FavButton } from '../ShoppingButtons/FavButton';
+import { QuantityCounter } from '../QuantityCounter/QuantityCounter';
 
 export const Pokepage = () => {
 
@@ -33,6 +34,8 @@ export const Pokepage = () => {
     const [pokemonEntry, setPokemonEntry] = useState<string>("")
     const [pokemonPrice, setPokemonPrice] = useState<string>("")
     const [updatedName, setUpdatedName] = useState<string>("")
+    const [currentQuantity, setCurrentQuantity] = useState<number>(1)
+
     const name = useParams().pokemon_name as string
 
     const getPokemonEntry = async () => {
@@ -111,9 +114,10 @@ export const Pokepage = () => {
 
                         <div className="pokepage__price">
                             {`Price: ${pokemonPrice}`}
+                            <QuantityCounter setQuantity={(quantity) => setCurrentQuantity(quantity)} initialQuantity="1" />
                         </div>
                         <div className="pokepage__shop__buttons">
-                            <CartButton name={updatedName} sprite={currentPokemonPage.sprite} price={pokemonPrice} />
+                            <CartButton name={updatedName} sprite={currentPokemonPage.sprite} price={pokemonPrice} quantity={currentQuantity} />
                             <FavButton name={currentPokemonPage.name} sprite={currentPokemonPage.sprite} />
                         </div>
                     </div>
