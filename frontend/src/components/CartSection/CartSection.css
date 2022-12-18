@@ -5,7 +5,7 @@
 
 .cart__table td,
 .cart__table th {
-    padding: 12px 10px;
+    padding: 12px 30px;
     text-align: center;
 }
 
@@ -13,11 +13,15 @@
     background-color: rgb(255, 255, 255);
 }
 
+.cart__table tr {
+    background-color: rgb(255, 255, 255);
+}
+
 .quantity__cell__container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: .2em;
+    gap: .5em;
 }
 
 .quantity__cell__container__input {
@@ -43,6 +47,11 @@
 .cart__image__container {
     background-color: #2f3640;
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.cart__image__container:hover {
+    transform: scale(1.02);
+    transition: 100ms ease;
 }
 
 .table__x__button {
@@ -72,6 +81,10 @@
 
 }
 
+.cart__table th {
+    background-color: rgb(251, 247, 247);
+}
+
 .price__cell,
 .quantity__cell,
 .total__cell {
@@ -89,4 +102,62 @@
 
 .cart__table tr {
     border-bottom: 1px solid rgba(0, 0, 0, 0.236);
+}
+
+.quantity__cell__button {
+    padding: .1em .8em;
+    text-align: center;
+    border-radius: 50%;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.quantity__cell__button:hover {
+    background-color: #2f3640;
+    transform: scale(1.1);
+    transition: 500ms ease
+}
+
+.button__span {
+    font-size: 1.5em;
+}
+
+
+@media screen and (max-width:700px) {
+
+    .cart__table td,
+    .cart__table th {
+        padding: 12px 30px;
+        text-align: center;
+    }
+
+    .product__sprite {
+        width: 100px;
+        height: 100px;
+    }
+
+}
+
+@media screen and (max-width:650px) {
+
+    .cart__table td,
+    .cart__table th {
+        padding: 12px 20px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .cart__image__container {
+        margin-top: 20px;
+        width: fit-content;
+        display: flex;
+    }
+
+
+    .quantity__cell__container {
+        padding-left: 80px;
+    }
 }
