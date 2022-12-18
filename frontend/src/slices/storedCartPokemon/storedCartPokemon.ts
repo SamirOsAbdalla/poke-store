@@ -9,6 +9,10 @@ interface StoredPokemonType {
     price: string
 }
 
+interface AdjustedPokemonPayloadType {
+    name: string,
+    quantity: number
+}
 type InitialState = {
     storedCartPokemon: StoredPokemonType[]
 }
@@ -52,9 +56,29 @@ const storedCartPokemonSlice = createSlice({
             )
 
             state.storedCartPokemon = filteredPokemon
+        },
+
+        adjustPokemonInCart: (state, action: PayloadAction<AdjustedPokemonPayloadType>) => {
+            const payload = action.payload
+            const storedPokemon = state.storedCartPokemon
+
+            const index = storedPokemon.findIndex((pokemon) =>
+                pokemon.name === payload.name
+            )
+
+            if (payload.quantity === 0) {
+                const filteredPokemon = storedPokemon.filter(pokemon =>
+                    pokemon.name !== payload.name
+                )
+
+                state.storedCartPokemon = filteredPokemon
+            } else {
+                state.storedCartPokemon[index].quantity = action.payload.quantity;
+            }
+
         }
     }
 })
 
 export default storedCartPokemonSlice.reducer
-export const { storeNewPokemon, removePokemonFromCart } = storedCartPokemonSlice.actions
+export const { storeNewPokemon, removePokemonFromCart, adjustPokemonInCart } = storedCartPokemonSlice.actions
