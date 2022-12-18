@@ -1,5 +1,5 @@
 :root {
-    --pokeball-dimension: 100px;
+    --pokeball-dimension: 115px;
 }
 
 
@@ -32,7 +32,7 @@
     content: "";
     height: calc(var(--pokeball-dimension)/10);
     background-color: #383b4f;
-    top: calc(var(--pokeball-dimension) * .45);
+    top: calc(var(--pokeball-dimension) * .43);
     width: 107px;
     left: -1.5px;
 }
@@ -52,5 +52,5 @@
             #383b4f calc(var(--pokeball-dimension) * .128));
     border-radius: 50%;
     top: calc(var(--pokeball-dimension) * .32);
-    left: calc(var(--pokeball-dimension) * .32);
+    left: calc(var(--pokeball-dimension) * .275);
 }
