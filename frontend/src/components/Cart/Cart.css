@@ -2,8 +2,32 @@
     padding-top: 8em;
     display: flex;
     justify-content: center;
+    gap: 15em;
+    align-items: flex-start;
+    height: 100%;
+    background-color: rgb(231, 236, 242);
+    padding-bottom: 70vh;
+}
+
+.cart__info__container {
+    display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+
+.cart__shopping__text {
+    font-size: 3em;
+    margin-bottom: 1em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cart__table {
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+
 }
 
 thead {
@@ -14,4 +38,88 @@ thead {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+@media screen and (max-width: 1430px) {
+    .cart__wrapper {
+        justify-content: flex-start;
+        gap: 7em;
+    }
+
+    .cart__table {
+        margin-left: 4em;
+    }
+}
+
+@media screen and (max-width: 1130px) {
+    .cart__wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cart__summary__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cart__table {
+        margin-left: 0em;
+    }
+}
+
+@media screen and (max-width: 560px) {
+
+    .cart__info__container {
+        width: 100%;
+    }
+
+    .cart__table thead {
+        display: none;
+    }
+
+    .cart__table,
+    .cart__table tbody,
+    .cart__table tr,
+    .cart__table td {
+        display: block;
+        width: 100%;
+    }
+
+    .cart__table tr {
+        margin-bottom: 15px;
+    }
+
+    .cart__table td {
+        text-align: right;
+        padding-left: 50%;
+        text-align: right;
+        position: relative;
+    }
+
+    .cart__table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .cart__image__container {
+        margin-top: 30px;
+    }
+
+    .cart__image__container {
+        width: fit-content
+    }
+
+    .product__name {
+        margin-top: 10px;
+        text-align: left;
+    }
+
 }
