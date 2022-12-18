@@ -29,6 +29,7 @@
 
 .pokepage__sprite__image__container:hover {
     transform: scale(1.1);
+    transition: 500ms ease
 }
 
 
@@ -51,7 +52,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 4em;
+    font-size: 3.5em;
     font-weight: bold;
     color: rgb(255, 255, 255);
     background-color: rgb(146, 14, 14);
@@ -183,6 +184,24 @@
     }
 }
 
+@media screen and (max-width: 680px) {
+    .pokepage__container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .pokepage__sprite__image {
+        width: 300px;
+        height: 300px;
+    }
+
+    .pokepage__sprite__image__container {
+        width: 300px;
+        height: 300px;
+    }
+}
+
 @media screen and (max-width: 520px) {
     .pokepage__name {
         font-size: 2em;
@@ -205,3 +224,5 @@
 
 
 }
+
+@media screen and (max-width: 520px) {}
