@@ -21,13 +21,13 @@
 
 .welcome-greeting {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: rgb(251, 251, 251);
+    color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     text-align: center;
     font-size: 4em;
     font-weight: bold;
-    background-color: #f51939;
+    background-color: rgb(146, 14, 14);
     border-radius: 10px;
     padding-left: .3em;
     padding-right: .3em;
