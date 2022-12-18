@@ -1,5 +1,5 @@
 :root {
-    --navbar-heading-padding: 1em;
+    --navbar-heading-padding: 2.5em;
     --navbar-heading-margin: 5vw;
     --navbar-component-font-color: rgb(251, 251, 251);
 }
@@ -87,8 +87,8 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: none;
     color: var(--navbar-component-font-color);
-    font-size: 1.3em;
-    padding: 0.2em 0.5em 0.2em 0.5em;
+    font-size: 2em;
+    padding: .2em;
     transition: 0.4s ease;
 }
 
@@ -140,9 +140,10 @@
     padding: 5px 8px;
     position: relative;
     text-align: center;
-    left: -12.5px;
+    left: -16px;
     top: -13px;
     text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .hamburger {
@@ -231,7 +232,7 @@
     .nav__links__left {
         position: fixed;
         left: -110%;
-        top: 5.4em;
+        top: 4.9em;
         gap: 0;
         flex-direction: column;
         background-color: #2f3640;
