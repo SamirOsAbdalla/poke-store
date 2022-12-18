@@ -22,7 +22,7 @@ export const QuantityCounter = (props: PropType) => {
             selectedOption?.setAttribute("selected", "selected")
         }
 
-    })
+    }, [])
 
 
     return (
