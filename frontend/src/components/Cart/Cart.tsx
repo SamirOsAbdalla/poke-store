@@ -5,6 +5,7 @@ import { CartSection } from '../CartSection/CartSection'
 import { useEffect, useState } from 'react'
 import { pokemonInfo } from '../../interfaces/interface'
 import { CartSummary } from '../CartSummary/CartSummary'
+import { EmptyCart } from '../EmptyCart/EmptyCart'
 
 export const Cart = () => {
 
@@ -12,7 +13,7 @@ export const Cart = () => {
     const numInCart = useAppSelector(state => state.numInCart.numberInCart)
 
     if (numInCart === 0) {
-        return (<div></div>)
+        return (<EmptyCart />)
     }
     else {
         const totalPrice = allPokemonInCart.reduce((accumulator, curVal) =>
