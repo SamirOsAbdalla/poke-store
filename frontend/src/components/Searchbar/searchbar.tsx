@@ -5,48 +5,19 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { updatePokemonName } from "../../slices/search/searchSlice"
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineSearch } from "react-icons/ai"
+import { SearchButton } from '../SearchButton/SearchButton'
 
 //This component will search for a specific pokemon
-
+type PokemonType = {
+    name: string,
+    url: string,
+    price: string,
+    id: number
+}
 export const Searchbar = () => {
 
-    const [searchedPokemon, setSearchedPokemon] = useState("")
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault()
-    }
-
-
-    const currentSearchedPokemon = useAppSelector((state) =>
-        state.search.pokemonName)
-
-
-
-    useEffect(() => {
-
-        //When a user changes paths it will still display
-        //the pokemon they searched for
-        setSearchedPokemon(currentSearchedPokemon)
-    }, [])
-
-
-
-    const dispatch = useAppDispatch()
-
-
-
-    const handlePokemonNameChange = (e: React.FormEvent<HTMLInputElement>) => {
-        setSearchedPokemon(e.currentTarget.value)
-    }
-
-
-
-    const navigate = useNavigate()
-    const submitUpdatedName = (e: React.SyntheticEvent) => {
-        e?.preventDefault()
-        const lowercaseSearchedPokemon: string = searchedPokemon.toLowerCase()
-        dispatch(updatePokemonName(lowercaseSearchedPokemon))
-        window.localStorage.setItem("CURRENT_SEARCHED_POKEMON", lowercaseSearchedPokemon)
-        navigate(`/shop/${lowercaseSearchedPokemon}`)
     }
 
 
@@ -58,12 +29,7 @@ export const Searchbar = () => {
                     <div className='label'>
                         <label>Search for a pokemon below or click shop!</label>
                     </div>
-                    <div className="search__modules">
-                        <input placeholder="Search..." className="search__input" type="text" value={searchedPokemon} onChange={handlePokemonNameChange} />
-                        <button className="search__button" type="submit" onClick={submitUpdatedName}>
-                            <AiOutlineSearch className="search__icon" />
-                        </button>
-                    </div>
+                    <SearchButton />
                 </div>
             </form>
         </div>
