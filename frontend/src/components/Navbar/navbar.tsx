@@ -90,9 +90,9 @@ export const Navbar = () => {
                     <li>
                         <NavLink className="nav__link__icon shopping__bag__container" to="/cart">
                             <AiOutlineShoppingCart onClick={closeHamburger} className="shopping__bag" />
-                            {numInCart > 0 ? <div className="shopping__number__items">
+                            <div className="shopping__number__items">
                                 {numInCart}
-                            </div> : <div></div>}
+                            </div>
                         </NavLink>
                     </li>
                     <li className="hidden__hamburger">
