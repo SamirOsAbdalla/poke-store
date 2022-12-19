@@ -45,6 +45,7 @@ const getAllPokemon = async () => {
     return allPokemon.data.results
 }
 
+
 export default {
     getPokepage,
     getAllPokemon,

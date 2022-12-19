@@ -43,6 +43,7 @@ const storedCartPokemonSlice = createSlice({
                 } else {
                     state.storedCartPokemon[index].quantity += action.payload.quantity;
                 }
+                window.localStorage.setItem("STORED_CART_POKEMON", JSON.stringify(state.storedCartPokemon))
             }
         },
 
@@ -56,6 +57,7 @@ const storedCartPokemonSlice = createSlice({
             )
 
             state.storedCartPokemon = filteredPokemon
+            window.localStorage.setItem("STORED_CART_POKEMON", JSON.stringify(filteredPokemon))
         },
 
         adjustPokemonInCart: (state, action: PayloadAction<AdjustedPokemonPayloadType>) => {
@@ -75,7 +77,7 @@ const storedCartPokemonSlice = createSlice({
             } else {
                 state.storedCartPokemon[index].quantity = action.payload.quantity;
             }
-
+            window.localStorage.setItem("STORED_CART_POKEMON", JSON.stringify(state.storedCartPokemon))
         }
     }
 })
