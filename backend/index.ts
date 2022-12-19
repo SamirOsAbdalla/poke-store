@@ -103,6 +103,8 @@ app.get('/', async (req: Request, res: Response) => {
     res.send(allPokemon)
 })
 
+
+
 app.get("/entry/:pokemon_name", async (req: Request, res: Response) => {
     const api = new PokemonClient({
         cacheOptions: { maxAge: 500000, exclude: { query: false } },

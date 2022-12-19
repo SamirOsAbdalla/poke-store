@@ -13,7 +13,17 @@ import { setAllPokemonNames } from './slices/allPokemon/allPokemonNamesSlice';
 import { Shop } from './components/Shop/Shop';
 import { PokemonCard } from './components/PokemonCard/PokemonCard';
 import { Cart } from './components/Cart/Cart';
+import { ErrorPage } from './components/ErrorPage/ErrorPage';
+import { storeNewPokemon } from './slices/storedCartPokemon/storedCartPokemon';
+import { increaseNumberInCart } from './slices/numInCart/numInCartSlice';
+import { AboutPage } from './components/AboutPage/AboutPage';
 
+type PokemonType = {
+  name: string,
+  price: string,
+  quantity: number,
+  sprite: string
+}
 const App = () => {
 
   const dispatch = useAppDispatch()
@@ -25,6 +35,7 @@ const App = () => {
   //fetches all pokemon names from pokeapi
   const getPokemonNames = async () => {
     const results = await pokemonService.getAllPokemon()
+
     const nameArray = [];
 
     for (let i = 0; i < results.length; i++) {
@@ -44,12 +55,6 @@ const App = () => {
   useEffect(() => {
     getPokemonNames()
 
-    //react now remembers the current pokemon page on reload
-    const currentPokemonSearched = window.localStorage.getItem("CURRENT_SEARCHED_POKEMON")
-    if (currentPokemonSearched) {
-      dispatchCurrentPokemonSearched(currentPokemonSearched)
-    }
-
     //react remembers the number of pokemon stored in cart
     const numPokemonInCart = window.localStorage.getItem("NUMBER_POKEMON_IN_CART")
     if (numPokemonInCart != null) {
@@ -63,6 +68,14 @@ const App = () => {
       }
     }
 
+    const localCartPokemon = window.localStorage.getItem("STORED_CART_POKEMON")
+    if (localCartPokemon) {
+      const localCartPokemonArray = JSON.parse(localCartPokemon)
+      localCartPokemonArray.forEach((pokemon: PokemonType) => {
+        dispatch(storeNewPokemon(pokemon))
+        dispatch(increaseNumberInCart(pokemon.quantity))
+      })
+    }
   }, [])
 
 
@@ -83,6 +96,8 @@ const App = () => {
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:pokemon_name" element={<Pokepage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/shop/error" element={<ErrorPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </BrowserRouter>
   );
