@@ -1,14 +1,31 @@
 import express, { Express, Request, Response } from "express"
 import { AxiosResponse, AxiosError } from "axios"
 import { PokemonClient, Pokemon, Description } from 'pokenode-ts';
+const { notFound, errorHandler } = require("./middlewares/errorMiddleware")
+
 const app = express()
 const cors = require('cors')
 const axios = require("axios")
-
+const dotenv = require("dotenv")
+const userRoutes = require("./routes/userRoutes")
+const mongoose = require('mongoose')
 
 app.use(cors())
+dotenv.config()
 app.use(express.json());
 
+
+async function connectMongo() {
+    try {
+        await mongoose.connect(process.env.MONGO_URL)
+        console.log("Connected to MongoDB Database")
+    }
+    catch (error: unknown) {
+        console.log(error);
+    }
+}
+
+connectMongo()
 const checkWeirdPokemonNames = (pokemonName: string) => {
     switch (pokemonName) {
         case ("enamorus-incarnate"): {
@@ -171,8 +188,11 @@ app.get("/shop/:pokemon_name", async (req: Request, res: Response) => {
 
 })
 
+app.use("/api/users", userRoutes)
+app.use(notFound)
+app.use(errorHandler)
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
