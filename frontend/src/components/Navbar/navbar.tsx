@@ -31,6 +31,7 @@ export const Navbar = () => {
         return state.numInCart.numberInCart
     })
     const loginStatus = useAppSelector(state => state.loginStatus.status)
+    const profileLink = loginStatus ? "/profile" : "/login"
     const allPokemonInCart = useAppSelector(state => state.storedCartPokemon.storedCartPokemon)
 
     return (
@@ -53,7 +54,7 @@ export const Navbar = () => {
                         </NavLink>
                     </li>
                     <li className="active__hamburger hamburger__item">
-                        <NavLink onClick={() => closeHamburger()} className="nav__link__icon" to="/profile">
+                        <NavLink onClick={() => closeHamburger()} className="nav__link__icon" to={profileLink}>
                             <BsPerson className="person" />
                         </NavLink>
                     </li>
@@ -85,7 +86,7 @@ export const Navbar = () => {
                         </NavLink>
                     </li>
                     <li className="hidden__hamburger">
-                        <NavLink className="nav__link__icon" to="/profile">
+                        <NavLink className="nav__link__icon" to={profileLink}>
                             <BsPerson className="person" />
                         </NavLink>
                     </li>
