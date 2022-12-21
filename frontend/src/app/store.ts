@@ -3,6 +3,8 @@ import searchSliceReducer from '../slices/search/searchSlice'
 import numInCartReducer from "../slices/numInCart/numInCartSlice"
 import storedCartPokemonReducer from '../slices/storedCartPokemon/storedCartPokemon'
 import allPokemonNamesReducer from "../slices/allPokemon/allPokemonNamesSlice"
+import loginStatus from '../slices/loginStatus/loginStatusSlice'
+import userInfo from '../slices/userInfo/userInfoSlice'
 
 const store = configureStore({
     reducer: {
@@ -10,6 +12,8 @@ const store = configureStore({
         numInCart: numInCartReducer,
         storedCartPokemon: storedCartPokemonReducer,
         allPokemonNames: allPokemonNamesReducer,
+        loginStatus: loginStatus,
+        userInfo: userInfo,
     }
 })
 
