@@ -17,6 +17,10 @@ import { ErrorPage } from './components/ErrorPage/ErrorPage';
 import { storeNewPokemon } from './slices/storedCartPokemon/storedCartPokemon';
 import { increaseNumberInCart } from './slices/numInCart/numInCartSlice';
 import { AboutPage } from './components/AboutPage/AboutPage';
+import { LoginPage } from './components/LoginPage/LoginPage';
+import { SignupPage } from './components/SignupPage/SignupPage';
+import { setLoginStatusFalse, setLoginStatusTrue } from './slices/loginStatus/loginStatusSlice';
+import { ProfilePage } from './components/ProfilePage/ProfilePage';
 
 type PokemonType = {
   name: string,
@@ -49,10 +53,22 @@ const App = () => {
     window.localStorage.setItem("ALL_POKEMON_NAMES", (JSON.stringify(nameArray)))
   }
 
-
+  const setLoginStatus = () => {
+    const status = window.localStorage.getItem("LOGGED_IN")
+    if (status) {
+      if (JSON.parse(status)) {
+        dispatch(setLoginStatusTrue())
+      } else {
+        dispatch(setLoginStatusFalse())
+      }
+    } else {
+      dispatch(setLoginStatusFalse())
+    }
+  }
 
 
   useEffect(() => {
+    setLoginStatus()
     getPokemonNames()
 
     //react remembers the number of pokemon stored in cart
@@ -98,6 +114,9 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/shop/error" element={<ErrorPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );
