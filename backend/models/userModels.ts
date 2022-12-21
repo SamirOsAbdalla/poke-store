@@ -5,11 +5,16 @@ import { NextFunction } from "express"
 import { Mongoose } from "mongoose"
 import { createHistogram } from "perf_hooks"
 
-export interface UserDocument extends Document {
+export interface User extends Document {
     name: string,
     email: string,
     password: string,
+    pic: string,
     favorites: FavoriteType[]
+}
+
+interface UserDocument extends User, Document {
+    matchPassword: (password: string) => Promise<boolean>;
 }
 
 type FavoriteType = {
@@ -32,6 +37,11 @@ const userSchema: Schema<UserDocument> = new Schema(
         password: {
             type: String,
             required: true
+        },
+        pic: {
+            type: String,
+            required: true,
+            default: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
         },
         favorites: {
             type: [{ name: String, price: String, sprite: String }],
