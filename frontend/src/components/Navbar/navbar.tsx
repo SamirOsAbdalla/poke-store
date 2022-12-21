@@ -5,21 +5,9 @@ import { useAppSelector } from "../../app/hooks";
 import { Cart } from "../Cart/Cart";
 import { AiOutlineShoppingCart, AiOutlineStar } from "react-icons/ai"
 import { CartSection } from "../CartSection/CartSection";
-{/*<div className="cart__hidden cart__window__wrapper">
-                            <div className="cart__window__heading">
-                                Cart
-                            </div>
-                            <div className="displayed__cart__pokemon">
-                                {allPokemonInCart.map(pokemon =>
-                                    <CartSection
-                                        name={pokemon.name}
-                                        key={pokemon.name}
-                                        sprite={pokemon.sprite}
-                                        quantity={pokemon.quantity}
-                                        price={pokemon.price}
-                                    />)}
-                            </div>
-                        </div>*/}
+import { useState } from "react";
+import { BsPerson } from "react-icons/bs"
+
 const handleHamburgerClick = () => {
     const hamburger = document.querySelector(".hamburger")
     const navLinksLeft = document.querySelector(".nav__links__left")
@@ -42,6 +30,7 @@ export const Navbar = () => {
     const numInCart = useAppSelector(state => {
         return state.numInCart.numberInCart
     })
+    const loginStatus = useAppSelector(state => state.loginStatus.status)
     const allPokemonInCart = useAppSelector(state => state.storedCartPokemon.storedCartPokemon)
 
     return (
@@ -64,8 +53,8 @@ export const Navbar = () => {
                         </NavLink>
                     </li>
                     <li className="active__hamburger hamburger__item">
-                        <NavLink onClick={() => closeHamburger()} className="nav__link__icon" to="/favorites">
-                            <AiOutlineStar className="favorites" />
+                        <NavLink onClick={() => closeHamburger()} className="nav__link__icon" to="/profile">
+                            <BsPerson className="person" />
                         </NavLink>
                     </li>
                     <li className="active__hamburger hamburger__item">
@@ -96,8 +85,8 @@ export const Navbar = () => {
                         </NavLink>
                     </li>
                     <li className="hidden__hamburger">
-                        <NavLink className="nav__link__icon" to="/favorites">
-                            <AiOutlineStar className="favorites" />
+                        <NavLink className="nav__link__icon" to="/profile">
+                            <BsPerson className="person" />
                         </NavLink>
                     </li>
                     <li className="hidden__hamburger">
