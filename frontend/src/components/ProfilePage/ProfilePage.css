@@ -1,0 +1,12 @@
+.profile__wrapper {
+    height: 100vh;
+    background-color: aliceblue;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile__container {
+    margin: auto;
+}
