@@ -21,6 +21,7 @@ import { LoginPage } from './components/LoginPage/LoginPage';
 import { SignupPage } from './components/SignupPage/SignupPage';
 import { setLoginStatusFalse, setLoginStatusTrue } from './slices/loginStatus/loginStatusSlice';
 import { ProfilePage } from './components/ProfilePage/ProfilePage';
+import { setCurrentUser } from './slices/userInfo/userInfoSlice';
 
 type PokemonType = {
   name: string,
@@ -55,9 +56,21 @@ const App = () => {
 
   const setLoginStatus = () => {
     const status = window.localStorage.getItem("LOGGED_IN")
+
     if (status) {
       if (JSON.parse(status)) {
         dispatch(setLoginStatusTrue())
+        const userInfo = window.localStorage.getItem("USER_INFO")
+        if (userInfo) {
+          const parsedUserInfo = JSON.parse(userInfo)
+          const dispatchedInfo = {
+            name: parsedUserInfo.name,
+            email: parsedUserInfo.email,
+            pic: parsedUserInfo.pic,
+            favorites: parsedUserInfo.favorites
+          }
+          dispatch(setCurrentUser(dispatchedInfo))
+        }
       } else {
         dispatch(setLoginStatusFalse())
       }
