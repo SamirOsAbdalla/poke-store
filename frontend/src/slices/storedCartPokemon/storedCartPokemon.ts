@@ -78,9 +78,13 @@ const storedCartPokemonSlice = createSlice({
                 state.storedCartPokemon[index].quantity = action.payload.quantity;
             }
             window.localStorage.setItem("STORED_CART_POKEMON", JSON.stringify(state.storedCartPokemon))
+        },
+
+        removeAllPokemon: (state) => {
+            state.storedCartPokemon = []
         }
     }
 })
 
 export default storedCartPokemonSlice.reducer
-export const { storeNewPokemon, removePokemonFromCart, adjustPokemonInCart } = storedCartPokemonSlice.actions
+export const { storeNewPokemon, removePokemonFromCart, adjustPokemonInCart, removeAllPokemon } = storedCartPokemonSlice.actions
