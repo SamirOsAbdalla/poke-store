@@ -16,11 +16,11 @@ const path = require("path")
 dotenv.config()
 app.use(express.json());
 app.use(cors())
-app.use(express.static(path.resolve(__dirname, "./frontend/build")));
+
 
 async function connectMongo() {
     try {
-        await mongoose.connect(process.env.MONGO_URL)
+        await mongoose.connect(process.env.MONGO_URI)
         console.log("Connected to MongoDB Database")
     }
     catch (error: unknown) {
@@ -111,7 +111,10 @@ const checkWeirdPokemonNames = (pokemonName: string) => {
         }
     }
 }
-app.get('/', async (req: Request, res: Response) => {
+
+
+
+app.get('/main', async (req: Request, res: Response) => {
     const api = new PokemonClient({
         cacheOptions: { maxAge: 500000, exclude: { query: false } },
     })
@@ -193,7 +196,17 @@ app.get("/shop/:pokemon_name", async (req: Request, res: Response) => {
 
 app.use("/api/users", userRoutes)
 
+__dirname = path.resolve();
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+    app.get("*", (req, res) =>
+        res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+    );
+} else {
+
+}
 app.use(notFound)
 app.use(errorHandler)
 
