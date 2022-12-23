@@ -27,7 +27,7 @@ export const Shop = () => {
     }
     return (
         <div className="shop__wrapper">
-            {nameArray.map((pokemon: pokemonType, i: number) => {
+            {nameArray?.map((pokemon: pokemonType, i: number) => {
                 return <PokemonCard key={i} name={pokemon.name} sprite={pokemon.sprite} price={pokemon.price} />
             })}
         </div>

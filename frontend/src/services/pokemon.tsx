@@ -7,7 +7,7 @@ const baseUrl = ''
 
 const getPokepage = (pokemon_name: string) => {
 
-    const request = axios.get(`${baseUrl}/shop/${pokemon_name}`)
+    const request = axios.get(`/shop/${pokemon_name}`)
     return request.then(response => {
         if (response.status === 400) {
 
@@ -24,7 +24,7 @@ const getPokepage = (pokemon_name: string) => {
 }
 
 const getPokemonEntry = (pokemon_name: string) => {
-    const pokemonEntry = axios.get(`${baseUrl}/entry/${pokemon_name}`)
+    const pokemonEntry = axios.get(`/entry/${pokemon_name}`)
     return pokemonEntry.then(response => {
         if (response.status === 400) {
 
@@ -40,7 +40,7 @@ const getPokemonEntry = (pokemon_name: string) => {
 }
 
 const getAllPokemon = async () => {
-    const allPokemon = await axios.get(`${baseUrl}`)
+    const allPokemon = await axios.get(`/main`)
 
     return allPokemon.data.results
 }
