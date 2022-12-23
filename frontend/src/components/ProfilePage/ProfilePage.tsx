@@ -5,10 +5,13 @@ import { useState, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { setCurrentUser } from '../../slices/userInfo/userInfoSlice'
 import userServices from "../../services/users"
+import { PokemonCard } from '../PokemonCard/PokemonCard'
+import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner'
+import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 type FavoriteType = {
-    name: String,
-    price: String,
-    sprite: String
+    name: string,
+    price: string,
+    sprite: string
 }
 
 export const ProfilePage = () => {
@@ -22,6 +25,9 @@ export const ProfilePage = () => {
     const [error, setError] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(false)
     const [token, setToken] = useState<string>("")
+
+
+    let userFavorites = (useAppSelector(state => state.userInfo.userInfo)).favorites
     const postDetails = (pics: any) => {
 
         const data = new FormData()
@@ -72,6 +78,7 @@ export const ProfilePage = () => {
     return (
         <div className="profile__wrapper">
             <div className="profile__container">
+                {error && <ErrorMessage message={error} />}
                 <div className="profile__top">
                     <div className="profile__picture__container">
                         <img className="profile__picture" src={profilePicture} />
@@ -111,6 +118,7 @@ export const ProfilePage = () => {
                                             onChange={(e: React.FormEvent<HTMLInputElement>) =>
                                                 setPassword(e.currentTarget.value)}
                                             className='profile__input'
+                                            value={password}
                                             type="password"
                                             required
                                         >
@@ -138,6 +146,17 @@ export const ProfilePage = () => {
                             </form>
                         </div>
                     </div>
+                </div>
+                {loading && <LoadingSpinner />}
+                <div className="favorites__wrapper">
+                    <div className='favorites__header'>
+                        Favorites
+                    </div>
+                    {userFavorites?.length > 0 ? <div className='favorites__container'>
+                        {
+                            userFavorites?.map(favorite => <PokemonCard key={favorite.name} name={favorite.name} sprite={favorite.sprite} price={favorite.price} />)
+                        }
+                    </div> : <div></div>}
                 </div>
             </div>
         </div>

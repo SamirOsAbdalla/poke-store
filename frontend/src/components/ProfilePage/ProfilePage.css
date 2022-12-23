@@ -5,10 +5,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 10em;
 }
 
 .profile__container {
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile__top {
@@ -17,6 +21,7 @@
     align-items: flex-start;
     gap: 7em;
     flex-wrap: wrap;
+    margin-bottom: 5em;
 }
 
 .profile__picture__container {
@@ -151,4 +156,32 @@
 .choose__picture {
     display: flex;
     justify-content: center;
+}
+
+.favorites__header {
+    font-size: 2em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.favorites__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorites__container {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 500px;
+    flex-wrap: wrap;
+    margin-bottom: 5em;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,
+        rgba(50, 50, 93, .1) 0 2px 5px 0,
+        rgba(0, 0, 0, .07) 0 1px 1px 0;
 }

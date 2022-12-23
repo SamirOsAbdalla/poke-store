@@ -35,7 +35,6 @@ export const Pokepage = () => {
     const [pokemonPrice, setPokemonPrice] = useState<string>("")
     const [updatedName, setUpdatedName] = useState<string>("")
     const [currentQuantity, setCurrentQuantity] = useState<number>(1)
-
     const name = useParams().pokemon_name as string
 
     const getPokemonEntry = async () => {
@@ -85,6 +84,8 @@ export const Pokepage = () => {
             fetchPokemon()
             getPokemonEntry()
         }
+
+
     }, [])
 
 
@@ -118,7 +119,7 @@ export const Pokepage = () => {
                         </div>
                         <div className="pokepage__shop__buttons">
                             <CartButton name={updatedName} sprite={currentPokemonPage.sprite} price={pokemonPrice} quantity={currentQuantity} />
-                            <FavButton name={currentPokemonPage.name} sprite={currentPokemonPage.sprite} />
+                            <FavButton price={pokemonPrice} name={updatedName} sprite={currentPokemonPage.sprite} />
                         </div>
                     </div>
                 </div>
