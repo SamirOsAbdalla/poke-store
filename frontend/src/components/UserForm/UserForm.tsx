@@ -13,6 +13,9 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { setLoginStatusTrue } from '../../slices/loginStatus/loginStatusSlice'
 import { useNavigate } from 'react-router-dom'
 import { setCurrentUser } from '../../slices/userInfo/userInfoSlice'
+import { setLoginStatusFalse } from '../../slices/loginStatus/loginStatusSlice'
+import { setNumberOfPokemon } from '../../slices/numInCart/numInCartSlice'
+import { removeAllPokemon } from '../../slices/storedCartPokemon/storedCartPokemon'
 interface PropType {
     formType: string
 }
@@ -62,11 +65,17 @@ export const UserForm = (props: PropType) => {
             } else {
                 setError("")
                 dispatch(setLoginStatusTrue())
+                window.localStorage.setItem("STORED_CART_POKEMON", JSON.stringify([]))
+                window.localStorage.setItem("NUMBER_POKEMON_IN_CART", JSON.stringify(0))
+                dispatch(setNumberOfPokemon(0))
+                dispatch(removeAllPokemon())
                 dispatch(setCurrentUser({
                     name: responseData.name,
                     email: responseData.email,
                     pic: responseData.pic,
-                    favorites: responseData.favorites
+                    favorites: responseData.favorites,
+                    id: responseData._id,
+                    token: responseData.token
                 }))
                 navigate("/profile")
             }
@@ -78,11 +87,17 @@ export const UserForm = (props: PropType) => {
             } else {
                 setError("")
                 dispatch(setLoginStatusTrue())
+                window.localStorage.setItem("STORED_CART_POKEMON", JSON.stringify([]))
+                window.localStorage.setItem("NUMBER_POKEMON_IN_CART", JSON.stringify(0))
+                dispatch(setNumberOfPokemon(0))
+                dispatch(removeAllPokemon())
                 dispatch(setCurrentUser({
                     name: responseData.name,
                     email: responseData.email,
                     pic: responseData.pic,
-                    favorites: responseData.favorites
+                    favorites: responseData.favorites,
+                    id: responseData._id,
+                    token: responseData.token
                 }))
                 navigate("/profile")
             }
