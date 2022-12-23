@@ -43,15 +43,20 @@ const App = () => {
 
     const nameArray = [];
 
+    const user = window.localStorage.getItem("USER_INFO")
+    let parsedUser;
+
+
     for (let i = 0; i < results.length; i++) {
       results[i].sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png`
       results[i].name = results[i].name[0].toUpperCase() + results[i].name.substring(1)
-      results[i].price = "$" + ((i + 1) * 1.783).toFixed(2)
+      results[i].price = "$" + ((i + 1) * 1.78).toFixed(2)
       results[i].id = i + 1;
       nameArray.push(results[i])
     }
-    dispatch(setAllPokemonNames(JSON.stringify(nameArray)))
+
     window.localStorage.setItem("ALL_POKEMON_NAMES", (JSON.stringify(nameArray)))
+    dispatch(setAllPokemonNames(JSON.stringify(nameArray)))
   }
 
   const setLoginStatus = () => {
@@ -67,7 +72,9 @@ const App = () => {
             name: parsedUserInfo.name,
             email: parsedUserInfo.email,
             pic: parsedUserInfo.pic,
-            favorites: parsedUserInfo.favorites
+            favorites: parsedUserInfo.favorites,
+            id: parsedUserInfo.id,
+            token: parsedUserInfo.token
           }
           dispatch(setCurrentUser(dispatchedInfo))
         }
