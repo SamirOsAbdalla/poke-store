@@ -12,8 +12,7 @@ type pokemonType = {
     name: string,
     sprite: string,
     price: string,
-    selected: boolean,
-    id: number,
+    selected: boolean
 }
 
 export const Shop = () => {
