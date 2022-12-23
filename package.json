@@ -7,5 +7,20 @@
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm start\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix"
-  }
+  },
+  "name": "pokemonstore",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamirOsAbdalla/pokeStore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamirOsAbdalla/pokeStore/issues"
+  },
+  "homepage": "https://github.com/SamirOsAbdalla/pokeStore#readme",
+  "description": ""
 }
