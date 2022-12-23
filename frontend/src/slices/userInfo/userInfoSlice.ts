@@ -4,7 +4,15 @@ type UserType = {
     name: string,
     email: string,
     pic: string,
-    favorites: [{ name: string, price: string, sprite: string }]
+    favorites: [{ name: string, price: string, sprite: string }],
+    id: string,
+    token: string
+}
+
+type FavoriteType = {
+    name: string,
+    price: string,
+    sprite: string
 }
 type InitialState = {
     userInfo: UserType
@@ -15,7 +23,9 @@ const initialState: InitialState = {
         name: "",
         email: "",
         pic: "",
-        favorites: [{ name: "", price: "", sprite: "" }]
+        favorites: [{ name: "", price: "", sprite: "" }],
+        id: "",
+        token: ""
     }
 }
 
