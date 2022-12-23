@@ -12,7 +12,9 @@
   "name": "pokemonstore",
   "version": "1.0.0",
   "main": "index.ts",
-  "devDependencies": {},
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SamirOsAbdalla/pokeStore.git"
