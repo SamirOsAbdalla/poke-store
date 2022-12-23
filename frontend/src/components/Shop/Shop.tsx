@@ -11,7 +11,9 @@ import "./Shop.css"
 type pokemonType = {
     name: string,
     sprite: string,
-    price: string
+    price: string,
+    selected: boolean,
+    id: number,
 }
 
 export const Shop = () => {
