@@ -10,10 +10,13 @@ const dotenv = require("dotenv")
 const userRoutes = require("./routes/userRoutes")
 const mongoose = require('mongoose')
 const path = require("path")
-app.use(cors())
+
+
+
 dotenv.config()
 app.use(express.json());
-
+app.use(cors())
+app.use(express.static(path.resolve(__dirname, "./frontend/build")));
 
 async function connectMongo() {
     try {
@@ -189,17 +192,6 @@ app.get("/shop/:pokemon_name", async (req: Request, res: Response) => {
 })
 
 app.use("/api/users", userRoutes)
-
-__dirname = path.resolve()
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "/frontend/build")))
-
-    app.get("*", (req: Request, res: Response) => {
-        res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-    })
-} else {
-
-}
 
 
 app.use(notFound)

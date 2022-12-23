@@ -46,17 +46,19 @@ const App = () => {
     const user = window.localStorage.getItem("USER_INFO")
     let parsedUser;
 
+    if (results) {
+      for (let i = 0; i < results.length; i++) {
+        results[i].sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png`
+        results[i].name = results[i].name[0].toUpperCase() + results[i].name.substring(1)
+        results[i].price = "$" + ((i + 1) * 1.78).toFixed(2)
+        results[i].id = i + 1;
+        nameArray.push(results[i])
+      }
 
-    for (let i = 0; i < results.length; i++) {
-      results[i].sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png`
-      results[i].name = results[i].name[0].toUpperCase() + results[i].name.substring(1)
-      results[i].price = "$" + ((i + 1) * 1.78).toFixed(2)
-      results[i].id = i + 1;
-      nameArray.push(results[i])
+      window.localStorage.setItem("ALL_POKEMON_NAMES", (JSON.stringify(nameArray)))
+      dispatch(setAllPokemonNames(JSON.stringify(nameArray)))
     }
 
-    window.localStorage.setItem("ALL_POKEMON_NAMES", (JSON.stringify(nameArray)))
-    dispatch(setAllPokemonNames(JSON.stringify(nameArray)))
   }
 
   const setLoginStatus = () => {
