@@ -18,6 +18,7 @@
     "pokenode-ts": "^1.17.0"
   },
   "name": "backend",
+  "type": "module",
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
