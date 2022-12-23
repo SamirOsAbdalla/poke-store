@@ -3,6 +3,11 @@ import { setLoginStatusTrue } from "../slices/loginStatus/loginStatusSlice";
 const baseUrl = 'http://localhost:3001'
 
 
+type FavoriteType = {
+    name: String,
+    price: String,
+    sprite: String
+}
 
 const loginUser = async (email: string, password: string) => {
     try {
@@ -47,7 +52,7 @@ const updateUser = async (name: string, email: string, password: string, picture
         }
     }
     try {
-        console.log("In users.tsx", name)
+
         const newUser = {
             email,
             name,
@@ -64,8 +69,50 @@ const updateUser = async (name: string, email: string, password: string, picture
     }
 }
 
+const addUserFavorites = async (id: string, token: string, favorite: FavoriteType) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+
+        const newFavorites: FavoriteType = favorite
+        const { data } = await axios.post(`${baseUrl}/api/users/profile/favorites/add`, newFavorites, config)
+
+        window.localStorage.setItem("USER_INFO", JSON.stringify(data))
+
+        return data
+    }
+    catch (error: any) {
+        return { error: true, message: error.response.data.message }
+    }
+}
+
+const removeUserFavorites = async (id: string, token: string, favorite: FavoriteType) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    try {
+
+        const newFavorites: FavoriteType = favorite
+        const { data } = await axios.post(`${baseUrl}/api/users/profile/favorites/remove`, newFavorites, config)
+
+        window.localStorage.setItem("USER_INFO", JSON.stringify(data))
+
+        return data
+    }
+    catch (error: any) {
+        return { error: true, message: error.response.data.message }
+    }
+}
+
 export default {
     loginUser,
     signupUser,
-    updateUser
+    updateUser,
+    addUserFavorites,
+    removeUserFavorites
 }
