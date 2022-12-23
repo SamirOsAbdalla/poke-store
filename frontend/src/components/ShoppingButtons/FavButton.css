@@ -1,5 +1,4 @@
 .pokemon__favorite__button {
-    background-color: #c40404;
     border-radius: 6px;
     border: none;
     color: rgb(255, 248, 248);
@@ -9,6 +8,7 @@
     align-items: center;
     padding-top: .3em;
     padding-bottom: .4em;
+
 }
 
 .favorite__button__icon {
