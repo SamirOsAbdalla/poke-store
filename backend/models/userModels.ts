@@ -43,10 +43,15 @@ const userSchema: Schema<UserDocument> = new Schema(
             required: true,
             default: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
         },
-        favorites: {
-            type: [{ name: String, price: String, sprite: String }],
-            required: true
-        }
+        favorites: [
+            new Schema(
+                {
+                    price: String,
+                    name: String,
+                    sprite: String
+                },
+                { _id: false })
+        ]
     }
 )
 
