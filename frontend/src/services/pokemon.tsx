@@ -1,7 +1,7 @@
 import axios from "axios";
 import { errorMessage } from "../interfaces/interface";
 import { useAppSelector } from "../app/hooks";
-const baseUrl = 'http://localhost:3001'
+const baseUrl = ''
 
 
 

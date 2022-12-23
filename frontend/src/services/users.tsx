@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setLoginStatusTrue } from "../slices/loginStatus/loginStatusSlice";
-const baseUrl = 'http://localhost:3001'
+const baseUrl = ''
 
 
 type FavoriteType = {
