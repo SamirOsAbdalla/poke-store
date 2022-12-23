@@ -7,7 +7,8 @@ import { FavButton } from '../ShoppingButtons/FavButton'
 import { Link } from 'react-router-dom'
 import { QuantityCounter } from '../QuantityCounter/QuantityCounter'
 import { useState } from 'react'
-
+import { useAppSelector } from '../../app/hooks'
+import { useEffect } from 'react'
 type CardPropType = {
     name: string,
     sprite: string,
@@ -36,7 +37,7 @@ export const PokemonCard = (props: CardPropType) => {
             </div>
             <div className="pokemon__buttons">
                 <CartButton name={props.name} sprite={props.sprite} price={props.price} quantity={currentQuantity} />
-                <FavButton name={props.name} sprite={props.sprite} />
+                <FavButton name={props.name} sprite={props.sprite} price={props.price} />
             </div>
         </div>
     )
