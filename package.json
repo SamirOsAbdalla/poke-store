@@ -32,5 +32,8 @@
     "url": "https://github.com/SamirOsAbdalla/pokeStore/issues"
   },
   "homepage": "https://github.com/SamirOsAbdalla/pokeStore#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@types/cors": "^2.8.13"
+  }
 }
