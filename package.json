@@ -24,6 +24,7 @@
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run index\" \"npm run client\""
   },
+  "proxy": "http://localhost:3001",
   "name": "pokemonstore",
   "version": "1.0.0",
   "main": "index.ts",

@@ -78,20 +78,19 @@
     transition: 0.4s ease;
 }
 
-.nav__logo {
-    font-size: 3.3em;
-    height: 1em;
-    position: relative;
-    bottom: 1.2em;
-    list-style: none;
-    font-family: "Pokemon Solid";
-}
+.nav__logo {}
 
 .logo {
     text-decoration: none;
     -webkit-text-fill-color: #FFDE00;
     -webkit-text-stroke: 1.2px #202f9e;
     font-weight: 1000;
+    font-size: 3.3em;
+    height: 1em;
+    position: relative;
+    bottom: .3em;
+    list-style: none;
+    font-family: "Pokemon Solid";
 }
 
 .nav__right {
@@ -235,7 +234,7 @@
 }
 
 @media screen and (max-width: 500px) {
-    .nav__logo {
+    .logo {
         font-size: 2.5em;
 
     }
@@ -247,7 +246,7 @@
         width: 15em;
     }
 
-    .nav__logo {
+    .logo {
         font-size: 2em;
         margin-right: .3em;
     }
