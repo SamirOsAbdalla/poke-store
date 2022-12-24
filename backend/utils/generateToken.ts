@@ -1,10 +1,11 @@
-const jwt = require("jsonwebtoken")
+
+import jwt from "jsonwebtoken"
 import { ObjectId } from "mongoose"
 
 const generateToken = (id: ObjectId) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, {
+    return jwt.sign({ id }, process.env.JWT_SECRET as string, {
         expiresIn: "30d"
     })
 }
 
-module.exports = generateToken
+export default generateToken

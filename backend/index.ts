@@ -1,16 +1,16 @@
-import express, { Express, Request, Response } from "express"
+import express, { Express, Request, Response, NextFunction } from "express"
 import { AxiosResponse, AxiosError } from "axios"
 import { PokemonClient, Pokemon, Description } from 'pokenode-ts';
-const { notFound, errorHandler } = require("./middlewares/errorMiddleware")
+
+import { notFound, errorHandler } from "./middlewares/errorMiddleware.js"
+import cors from "cors"
+import axios from "axios"
+import dotenv from "dotenv"
+import userRoutes from "./routes/userRoutes.js"
+import mongoose from "mongoose"
+import * as path from 'path';
 
 const app = express()
-const cors = require('cors')
-const axios = require("axios")
-const dotenv = require("dotenv")
-const userRoutes = require("./routes/userRoutes")
-const mongoose = require('mongoose')
-const path = require("path")
-
 
 
 dotenv.config()
@@ -20,7 +20,7 @@ app.use(cors())
 
 async function connectMongo() {
     try {
-        await mongoose.connect(process.env.MONGO_URI)
+        await mongoose.connect(process.env.MONGO_URI as string)
         console.log("Connected to MongoDB Database")
     }
     catch (error: unknown) {
@@ -196,7 +196,7 @@ app.get("/shop/:pokemon_name", async (req: Request, res: Response) => {
 
 app.use("/api/users", userRoutes)
 
-__dirname = path.resolve();
+const __dirname = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "/frontend/build")));

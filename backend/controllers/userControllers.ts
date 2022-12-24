@@ -1,9 +1,10 @@
 import { Request, Response } from "express"
-const User = require("../models/userModels")
-const asyncHandler = require("express-async-handler")
-const generateToken = require("../utils/generateToken")
+import User from "../models/userModels.js"
+import asyncHandler from "express-async-handler"
+import generateToken from "../utils/generateToken.js"
 
-const registerUser = asyncHandler(async (req: Request, res: Response) => {
+
+export const registerUser = asyncHandler(async (req: Request, res: Response) => {
     const { name, email, password } = req.body;
 
     const userExists = await User.findOne({ email })
@@ -38,7 +39,7 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 
 })
 
-const authUser = asyncHandler(async (req: Request, res: Response) => {
+export const authUser = asyncHandler(async (req: Request, res: Response) => {
 
     const { email, password } = req.body;
 
@@ -62,7 +63,7 @@ const authUser = asyncHandler(async (req: Request, res: Response) => {
     }
 })
 
-const updateUserProfile = asyncHandler(async (req: Request, res: Response) => {
+export const updateUserProfile = asyncHandler(async (req: Request, res: Response) => {
 
     const user = await User.findById(req.user?._id)
 
@@ -91,7 +92,7 @@ const updateUserProfile = asyncHandler(async (req: Request, res: Response) => {
     }
 })
 
-const updateUserFavorites = asyncHandler(async (req: Request, res: Response) => {
+export const updateUserFavorites = asyncHandler(async (req: Request, res: Response) => {
     const user = await User.findById(req.user?._id);
 
     if (user) {
@@ -115,7 +116,7 @@ const updateUserFavorites = asyncHandler(async (req: Request, res: Response) => 
     }
 })
 
-const removeUserFavorites = asyncHandler(async (req: Request, res: Response) => {
+export const removeUserFavorites = asyncHandler(async (req: Request, res: Response) => {
     const user = await User.findById(req.user?._id);
 
     if (user) {
@@ -141,4 +142,3 @@ const removeUserFavorites = asyncHandler(async (req: Request, res: Response) => 
         throw new Error("User not found")
     }
 })
-module.exports = { registerUser, authUser, updateUserProfile, updateUserFavorites, removeUserFavorites }

@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
+import mongoose from "mongoose"
 import { Schema, Model, model, Document } from "mongoose"
-const bcrypt = require("bcryptjs")
+import bcrypt from "bcryptjs"
 import { NextFunction } from "express"
 import { Mongoose } from "mongoose"
 import { createHistogram } from "perf_hooks"
@@ -69,4 +69,4 @@ userSchema.methods.matchPassword = async function (enteredPassword: string) {
 }
 
 const User = model<UserDocument>("User", userSchema)
-module.exports = User
+export default User
