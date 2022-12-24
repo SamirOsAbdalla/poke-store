@@ -82,6 +82,6 @@
     .cart__summary__wrapper {
         position: static;
         margin-right: 0em;
-        margin-bottom: 2em;
+        padding-bottom: 2em;
     }
 }

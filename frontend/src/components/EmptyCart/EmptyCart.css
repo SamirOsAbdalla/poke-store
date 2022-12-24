@@ -5,7 +5,8 @@
     align-items: center;
     background-color: rgb(231, 236, 242);
     height: 100vh;
-    overflow-x: hidden
+    overflow-x: hidden;
+    padding-bottom: 3em;
 }
 
 .empty__cart__icon__container {

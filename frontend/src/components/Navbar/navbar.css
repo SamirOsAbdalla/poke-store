@@ -78,7 +78,7 @@
     transition: 0.4s ease;
 }
 
-.nav__logo {}
+
 
 .logo {
     text-decoration: none;
@@ -88,7 +88,7 @@
     font-size: 3.3em;
     height: 1em;
     position: relative;
-    bottom: .3em;
+    bottom: .18em;
     list-style: none;
     font-family: "Pokemon Solid";
 }
