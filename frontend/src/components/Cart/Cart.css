@@ -54,11 +54,14 @@ thead {
 @media screen and (max-width: 1130px) {
     .cart__wrapper {
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        padding-bottom: 100px;
+    }
+
+    /* .cart__info__container {
         padding-top: 700px;
         padding-bottom: 200px;
-    }
+    } */
 
     .cart__summary__container {
         display: flex;
