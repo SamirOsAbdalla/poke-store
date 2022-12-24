@@ -132,7 +132,7 @@ export const UserForm = (props: PropType) => {
                     <input
                         className="input__field"
                         type="email"
-                        placeholder='Enter your email'
+                        placeholder='test@gmail.com'
                         value={email}
                         onChange={(e: React.FormEvent<HTMLInputElement>) =>
                             setEmail(e.currentTarget.value)}
@@ -144,7 +144,7 @@ export const UserForm = (props: PropType) => {
                     <input
                         className="input__field input__field__password"
                         type="password"
-                        placeholder='Enter your password'
+                        placeholder='test'
                         value={password}
                         onChange={(e: React.FormEvent<HTMLInputElement>) =>
                             setPassword(e.currentTarget.value)}
