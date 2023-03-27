@@ -22,6 +22,7 @@ import { SignupPage } from './components/SignupPage/SignupPage';
 import { setLoginStatusFalse, setLoginStatusTrue } from './slices/loginStatus/loginStatusSlice';
 import { ProfilePage } from './components/ProfilePage/ProfilePage';
 import { setCurrentUser } from './slices/userInfo/userInfoSlice';
+import { OrderConfirmation } from './components/OrderConfirmation/OrderConfirmation';
 
 type PokemonType = {
   name: string,
@@ -139,6 +140,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/confirmation" element={<OrderConfirmation />} />
       </Routes>
     </BrowserRouter>
   );

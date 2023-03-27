@@ -1,10 +1,14 @@
 import React from 'react'
 import "./CartSummary.css"
 import { BsArrowRight } from "react-icons/bs"
-
+import { NavLink } from 'react-router-dom'
 type PropType = {
     totalItems: number,
     totalPrice: number
+}
+
+const navigateToConfirmationPage = () => {
+
 }
 export const CartSummary = (props: PropType) => {
     return (
@@ -43,10 +47,13 @@ export const CartSummary = (props: PropType) => {
             </div>
             <div className='cart__summary__button__wrapper row__wrapper'>
                 <button className='cart__summary__button'>
-                    <div className='cart__summary__button__checkout'>Checkout</div>
+                    <NavLink className="summary__button__link" to="/confirmation">
+                        <div className='cart__summary__button__checkout' >Place Order</div>
+                    </NavLink>
+
                     <BsArrowRight className='cart__summary__button__arrow' />
                 </button>
             </div>
-        </div>
+        </div >
     )
 }

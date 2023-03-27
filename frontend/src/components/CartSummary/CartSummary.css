@@ -23,6 +23,12 @@
     border-bottom: 1px solid black;
 }
 
+.summary__button__link {
+
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
 .cart__summary__order__summary {
     font-weight: bold;
     font-size: 1.2em;
@@ -60,7 +66,7 @@
 .cart__summary__button:hover {
     transition: .5s ease;
     background-color: rgb(41, 40, 40);
-    transform: scale(1.04);
+    transform: scale(1.025);
     transition: .3s ease;
 }
 
