@@ -18,18 +18,32 @@ type pokemonType = {
 export const Shop = () => {
 
     const [loading, setIsLoading] = useState<boolean>(true)
-
-
+    const [filterValue, setFilterValue] = useState<string>("")
     const allNames = window.localStorage.getItem("ALL_POKEMON_NAMES")
-    let nameArray;
+    let nameArray: pokemonType[] = [];
     if (allNames != null) {
         nameArray = JSON.parse(allNames)
+
     }
     return (
         <div className="shop__wrapper">
-            {nameArray?.map((pokemon: pokemonType, i: number) => {
-                return <PokemonCard key={i} name={pokemon.name} sprite={pokemon.sprite} price={pokemon.price} />
-            })}
+            <div className="shop__filter">
+                <button className="shop__button">Filter</button>
+                <input
+                    className="shop__input"
+                    placeholder="Enter name..."
+                    value={filterValue}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setFilterValue(e.target.value)
+                    }}
+                />
+            </div>
+
+            <div className="pokecard__list">
+                {nameArray?.filter(pokemon => pokemon.name.includes(filterValue)).map((pokemon: pokemonType, i: number) => {
+                    return <PokemonCard key={i} name={pokemon.name} sprite={pokemon.sprite} price={pokemon.price} />
+                })}
+            </div>
         </div>
 
     )

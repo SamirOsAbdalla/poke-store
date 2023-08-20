@@ -1,10 +1,41 @@
 .shop__wrapper {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 2em;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
     padding-left: 2em;
     padding-right: 2em;
     padding-top: 10em;
     background-color: rgb(203, 230, 255);
+}
+
+.shop__filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shop__button {
+    background-color: #2f3640;
+    color: white;
+    font-weight: bold;
+    padding: .5em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.shop__input {
+
+    border: none;
+    padding: .5em;
+}
+
+.pokecard__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
