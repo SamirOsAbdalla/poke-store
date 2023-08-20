@@ -5,4 +5,4 @@ choosing! If an account is created users can also save their favorite pokemon
 to buy later.
 
 ## URL
-[https://pokestore.herokuapp.com/]
+https://pokestore.herokuapp.com/
