@@ -154,9 +154,25 @@ export const UserForm = (props: PropType) => {
                     <AiOutlineEyeInvisible onClick={toggleHiddenEye} className='login__eye login__icon' />
                     <AiOutlineEye onClick={toggleHiddenEye} className='login__icon login__eye inactive__eye' />
                 </div>
-                <div className="input__container">
-                    <button type="submit" className='login__button'>{props.formType}</button>
-                </div>
+
+                {props.formType === "Login" ?
+                    <div className="login__buttons">
+                        <div className="input__container">
+                            <button type="submit" className='login__button'>{props.formType}</button>
+                        </div>
+                        <div className="demo__container">
+                            <button onClick={() => {
+                                setEmail("test@gmail.com")
+                                setPassword("test")
+                            }} type="submit" className="demo__button">
+                                Test User
+                            </button>
+                        </div>
+                    </div>
+                    :
+                    <div className="input__container">
+                        <button type="submit" className='login__button'>{props.formType}</button>
+                    </div>}
             </form>
             <div className="login__signup">
                 <div className="login__signup__text">

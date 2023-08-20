@@ -1,5 +1,6 @@
 .pokemon__favorite__button {
     border-radius: 6px;
+    background-color: #c40404;
     border: none;
     color: rgb(255, 248, 248);
     width: 4em;
@@ -16,7 +17,7 @@
 }
 
 .pokemon__favorite__button:hover {
-    transform: translateY(-3px);
+
     background-color: #fc0808;
     cursor: pointer;
 }

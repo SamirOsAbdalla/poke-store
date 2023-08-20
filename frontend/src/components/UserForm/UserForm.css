@@ -55,6 +55,18 @@
     transition: all 0.2s ease
 }
 
+.login__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    flex-direction: column;
+}
+
+.demo__container {
+    width: 120px;
+}
+
 .login__button {
     height: 100%;
     width: 100%;
@@ -71,6 +83,26 @@
 .login__button:hover {
     background-color: #016dcb;
 }
+
+.demo__button {
+    height: 100%;
+    width: 100%;
+    padding: 1em;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #3e028b;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.demo__button:hover {
+    background-color: #2f0368;
+}
+
+
 
 .input__field:is(:focus, :valid)~.login__icon {
     color: blue;

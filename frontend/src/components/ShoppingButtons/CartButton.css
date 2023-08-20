@@ -16,7 +16,6 @@
 }
 
 .pokemon__cart__button:hover {
-    transform: translateY(-3px);
     background-color: #fc0808;
     cursor: pointer;
 }
