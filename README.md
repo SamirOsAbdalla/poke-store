@@ -32,3 +32,15 @@ they would like to buy.
 
 ## Account
 In order to actually favorite a pokemon, shoppers must create an account. Once an account is created, shoppers can change their name, password or even set a profile picture if they so please.
+
+  <a>
+    <img src="https://raw.githubusercontent.com/SamirOsAbdalla/poke-store/main/frontend/public/account.png" alt="account image">
+  </a>
+
+## Checkout
+Once a user is done shopping, they can "purchase" a pokemon which will then "arrive" in some unspecified
+amount of time (it's not arriving).
+
+  <a>
+    <img src="https://raw.githubusercontent.com/SamirOsAbdalla/poke-store/main/frontend/public/checkout.png" alt="checkout image">
+  </a>
