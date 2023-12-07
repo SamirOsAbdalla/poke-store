@@ -1,6 +1,6 @@
 <h1 align="center">
   <a>
-    <img src="https://raw.githubusercontent.com/SamirOsAbdalla/frontend/public/pokestore.png" alt="pokestore image">
+    <img src="https://raw.githubusercontent.com/SamirOsAbdalla/poke-store/frontend/public/pokestore.png" alt="pokestore image">
   </a>
 </h1>
 <p align="center">
