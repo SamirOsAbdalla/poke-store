@@ -1,10 +1,15 @@
-# PokeStore
+<h1 align="center">
+  <a>
+    <img src="https://raw.githubusercontent.com/SamirOsAbdalla/frontend/public/pokestore.png" alt="pokestore image">
+  </a>
+</h1>
+<p align="center">
+  A fun faux e-commerce site that allows shoppers to buy pokemon of their choosing! 
+</p>
 
-A fun faux e-commerce site that allows shoppers to buy pokemon of their
-choosing! 
+# Live Site URL
+https://www.clustersapp.net/
 
-## Live Site URL
-https://pokestore.herokuapp.com/
 
 ## Pokemon Item
 Each pokemon is displayed initially inside a small card. The pokemon can then be added to a cart
