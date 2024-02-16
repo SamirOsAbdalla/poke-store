@@ -9,7 +9,7 @@
 </p>
 
 # Live Site URL
-https://www.clustersapp.net/
+https://pokestore.herokuapp.com/
 
 # Features 
 - <a href="#pokemon item">Pokemon Item</a>
